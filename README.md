@@ -4,7 +4,8 @@ A way to quickly copy the WikiLink of the active file to your clipboard using a 
 
 ## Showcase
 
-<div class="substack-post-embed"><p lang="en">Showcase of my new plugin - https://github.com/Caffa/Copy-File-Link-Hotkey</p><p> - Pamela Wang, PhD</p><a data-comment-link href="https://substack.com/profile/329293831-pamela-wang-phd/note/c-213128963">Read on Substack</a></div><script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script>
+
+[![Substack Note Preview](https://github.com/user-attachments/assets/af838b50-2cb3-4d56-ba64-5f7f0afd045e)](https://substack.com/profile/329293831-pamela-wang-phd/note/c-213128963)
 
 ## The Problem
 
