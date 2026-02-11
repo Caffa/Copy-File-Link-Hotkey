@@ -30,6 +30,9 @@ This plugin allows you to instantly grab the `[[WikiLink]]` of your current acti
 2. Place `main.js`, `manifest.json`, and `styles.css` (if applicable) inside.
 3. Reload Obsidian and enable the plugin in **Community Plugins**.
 
+## Similar Functionality
+- Similar plugins are: [Copy Block Link](https://github.com/mgmeyers/obsidian-copy-block-link)
+
 ## ♥️ Support This Project
 
 If you find this little plugin useful, I'd truly appreciate your support. Please consider buying me a coffee on [Ko-fi](https://ko-fi.com/pamelawang_mwahacookie). Your contribution helps me keep making tools that make your creative life easier.
