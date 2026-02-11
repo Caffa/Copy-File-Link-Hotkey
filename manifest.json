@@ -1,7 +1,7 @@
 {
 	"id": "copy-file-link-hotkey",
 	"name": "Copy File Link Hotkey",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"minAppVersion": "1.7.7",
 	"description": "This plugin allows you to copy the link of the current file to the clipboard using a hotkey in wikilink format.",
 	"author": "Pamela Wang",

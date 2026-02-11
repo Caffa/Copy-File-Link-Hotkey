@@ -1,6 +1,6 @@
 {
 	"name": "copy-file-link-hotkey",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "This is a Copy File Link Hotkey for Obsidian (https://obsidian.md)",
 	"main": "main.js",
 	"type": "module",
