@@ -326,3 +326,3353 @@ I'll write the new main.ts without the settings import (since we're deleting set
 
 ---
 
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/caffae/Notes/TestPlugin/.obsidian/plugins/Copy-File-Link-Hotkey/src/main.ts</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<think><details><summary>Thought Process</summary>
+
+Main is done. Now mark todo 1 complete, mark todo 2 in progress, delete settings.ts.
+</details></think>
+
+---
+
+
+
+
+
+---
+
+<tool-use data-tool-type="task" data-tool-name="todo_write">
+<details><summary>Tool use: **todo_write** • Todo List</summary>
+
+- [x] Replace main.ts with minimal plugin: one command, no settings
+- [-] Delete settings.ts and remove import from main
+- [ ] Run npm run build to verify
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="delete_file">
+<details><summary>Tool use: **delete_file**</summary>
+
+Explanation: undefined
+
+
+</details>
+</tool-use>
+
+---
+
+<think><details><summary>Thought Process</summary>
+
+Settings.ts is deleted. Main.ts no longer imports from settings (I wrote the new main without that import). So todo 2 is done. Now run build.
+</details></think>
+
+---
+
+
+
+
+
+---
+
+<tool-use data-tool-type="task" data-tool-name="todo_write">
+<details><summary>Tool use: **todo_write** • Todo List</summary>
+
+- [x] Replace main.ts with minimal plugin: one command, no settings
+- [x] Delete settings.ts and remove import from main
+- [-] Run npm run build to verify
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/caffae/Notes/TestPlugin/.obsidian/plugins/Copy-File-Link-Hotkey && npm run build</summary>
+
+```bash
+cd /Users/caffae/Notes/TestPlugin/.obsidian/plugins/Copy-File-Link-Hotkey && npm run build
+```
+
+```
+
+&gt; copy-file-link-hotkey@1.0.0 build
+&gt; tsc -noEmit -skipLibCheck &amp;&amp; node esbuild.config.mjs production
+
+src/main.ts(1,32): error TS2307: Cannot find module 'obsidian' or its corresponding type declarations.
+src/main.ts(4,8): error TS2354: This syntax requires an imported helper but module 'tslib' cannot be found.
+src/main.ts(5,8): error TS2339: Property 'addCommand' does not exist on type 'CopyFileLinkHotkeyPlugin'.
+src/main.ts(9,23): error TS2339: Property 'app' does not exist on type 'CopyFileLinkHotkeyPlugin'.
+
+```
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="generic" data-tool-name="read_lints">
+<details>
+          <summary>Tool use: **read_lints** • Read lints for 1 file</summary>
+      
+Lint paths:
+
+- `/Users/caffae/Notes/TestPlugin/.obsidian/plugins/Copy-File-Link-Hotkey/src/main.ts`
+
+Lint results
+
+Lint errors for `/Users/caffae/Notes/TestPlugin/.obsidian/plugins/Copy-File-Link-Hotkey/src/main.ts`
+
+
+| Message | Range | Severity |
+|-------|-------|----------|
+| Cannot find module 'obsidian' or its corresponding type declarations. | 1:32-1:42 | DIAGNOSTIC_SEVERITY_ERROR |
+| This syntax requires an imported helper but module 'tslib' cannot be found. | 4:8-4:14 | DIAGNOSTIC_SEVERITY_ERROR |
+| Property 'addCommand' does not exist on type 'CopyFileLinkHotkeyPlugin'. | 5:8-5:18 | DIAGNOSTIC_SEVERITY_ERROR |
+| Property 'app' does not exist on type 'CopyFileLinkHotkeyPlugin'. | 9:23-9:26 | DIAGNOSTIC_SEVERITY_ERROR |
+
+
+</details>
+</tool-use>
+
+---
+
+<think><details><summary>Thought Process</summary>
+
+The build failed. The first two errors (obsidian module, tslib) are likely environment/install issues - need to run npm install. The last two (addCommand, app) suggest TypeScript doesn't see that we're extending Plugin - that could be because obsidian types aren't found. Let me run npm install first and then build again.
+</details></think>
+
+---
+
+
+Installing dependencies and re-running the build:
+
+
+---
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/caffae/Notes/TestPlugin/.obsidian/plugins/Copy-File-Link-Hotkey && npm install && npm run build</summary>
+
+```bash
+cd /Users/caffae/Notes/TestPlugin/.obsidian/plugins/Copy-File-Link-Hotkey && npm install && npm run build
+```
+
+```
+
+added 321 packages, and audited 322 packages in 2s
+
+137 packages are looking for funding
+  run &#96;npm fund&#96; for details
+
+found 0 vulnerabilities
+
+&gt; copy-file-link-hotkey@1.0.0 build
+&gt; tsc -noEmit -skipLibCheck &amp;&amp; node esbuild.config.mjs production
+
+
+```
+</details>
+</tool-use>
+
+---
+
+<think><details><summary>Thought Process</summary>
+
+Build succeeded after npm install. Let me confirm main.js was produced at plugin root and mark the last todo complete.
+</details></think>
+
+---
+
+
+
+
+
+---
+
+<tool-use data-tool-type="generic" data-tool-name="glob_file_search">
+<details>
+<summary>Tool use: **glob_file_search** • Searched codebase "undefined" • **1** result in **1** directory</summary>
+
+Directory: **/Users/caffae/Notes/TestPlugin/.obsidian/plugins/Copy-File-Link-Hotkey** (1 file)
+
+| File |
+|------|
+| `main.js` |
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="task" data-tool-name="todo_write">
+<details><summary>Tool use: **todo_write** • Todo List</summary>
+
+- [x] Replace main.ts with minimal plugin: one command, no settings
+- [x] Delete settings.ts and remove import from main
+- [x] Run npm run build to verify
+
+</details>
+</tool-use>
+
+---
+
+<think><details><summary>Thought Process</summary>
+
+All done. Build succeeded after npm install (the initial failure was due to missing node_modules). main.js is at plugin root. All todos are completed.
+</details></think>
+
+---
+
+
+Summary of what was implemented:
+
+**1. [src/main.ts](src/main.ts)**  
+- Replaced with a minimal plugin:
+  - Class renamed to `CopyFileLinkHotkeyPlugin`.
+  - Single command: `copy-file-link-wiki`, name "Copy file link (wiki)".
+  - Uses `checkCallback`: runs only when `getActiveFile()` is non-null; when not checking, builds `[[${file.path}]]`, copies with `navigator.clipboard.writeText()`, shows a success notice, and on failure shows "Failed to copy to clipboard".
+  - Removed ribbon, status bar, other commands, modal, settings tab, DOM listener, interval, and all settings usage.
+
+**2. [src/settings.ts](src/settings.ts)**  
+- Deleted. The plugin has no settings; the hotkey is assigned in **Settings → Hotkeys**.
+
+**3. Build**  
+- Ran `npm install` (deps were missing) then `npm run build`. Build completes successfully and `main.js` is produced at the plugin root.
+
+To use it: enable the plugin, open a note, run **Copy file link (wiki)** from the command palette or a hotkey you assign in **Settings → Hotkeys**. The current note’s wiki link (e.g. `[[folder/note.md]]`) is copied and a short notice is shown.
+
+---
+
+_**User**_
+
+The link should remove the .md and try to use obsidian's link resolver to see if you need the full relative file path (check the obsidian settings for the New Link Format, if it is shortest path when possible, use that for this plugin too)
+
+---
+
+_**Agent (model default, mode Agent)**_
+
+<think><details><summary>Thought Process</summary>
+
+The user wants two changes:
+1. Remove the `.md` extension from the wiki link (so `[[folder/note]]` instead of `[[folder/note.md]]`)
+2. Respect Obsidian's "New Link Format" setting - if it's "shortest path when possible", use the shortest path; otherwise use full relative path. I need to find how Obsidian exposes this setting and how to resolve links to get the shortest path.
+
+Let me search the Obsidian API and the codebase for link format settings and link resolution.
+</details></think>
+
+---
+
+
+
+
+
+---
+
+<tool-use data-tool-type="unknown" data-tool-name="semantic_search_full">
+<details>
+<summary>Tool use: **semantic_search_full**</summary>
+
+
+Parameters:
+
+```json
+{
+  "query": "Where is New Link Format or link format setting used in Obsidian API?",
+  "includePattern": "/Users/caffae/Notes/TestPlugin/.obsidian/plugins/Copy-File-Link-Hotkey",
+  "topK": 10,
+  "explanation": ""
+}
+```
+Result:
+
+```json
+{
+  "codeResults": [
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./src/main.ts",
+        "range": {
+          "startPosition": {
+            "column": 42
+          },
+          "endPosition": {
+            "line": 23,
+            "column": 1
+          }
+        },
+        "contents": "export default class CopyFileLinkHotkeyPlugin extends Plugin {\n\tasync onload() {\n\t\tthis.addCommand({\n\t\t\tid: 'copy-file-link-wiki',\n\t\t\tname: 'Copy file link (wiki)',\n\t\t\tcheckCallback: (checking: boolean) =&gt; {\n\t\t\t\tconst file = this.app.workspace.getActiveFile();\n\t\t\t\tif (!file) return false;\n\t\t\t\tif (checking) return true;\n\t\t\t\tconst wikiLink = &#96;[[${file.path}]]&#96;;\n\t\t\t\tnavigator.clipboard.writeText(wikiLink).then(\n\t\t\t\t\t() =&gt; new Notice('Copied file link to clipboard'),\n\t\t\t\t\t() =&gt; new Notice('Failed to copy to clipboard')\n\t\t\t\t);\n\t\t\t\treturn true;\n\t\t\t}\n\t\t});\n\t}\n\n\tonunload() {\n\t}\n}",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "export default class CopyFileLinkHotkeyPlugin extends Plugin {",
+            "lineNumber": 3,
+            "isSignature": true
+          },
+          {
+            "text": "\tasync onload() {",
+            "lineNumber": 4
+          },
+          {
+            "text": "\t\tthis.addCommand({",
+            "lineNumber": 5
+          },
+          {
+            "text": "\t\t\tid: 'copy-file-link-wiki',",
+            "lineNumber": 6
+          },
+          {
+            "text": "\t\t\tname: 'Copy file link (wiki)',",
+            "lineNumber": 7
+          },
+          {
+            "text": "\t\t\tcheckCallback: (checking: boolean) =&gt; {",
+            "lineNumber": 8
+          },
+          {
+            "text": "\t\t\t\tconst file = this.app.workspace.getActiveFile();",
+            "lineNumber": 9
+          },
+          {
+            "text": "\t\t\t\tif (!file) return false;",
+            "lineNumber": 10
+          },
+          {
+            "text": "\t\t\t\tif (checking) return true;",
+            "lineNumber": 11
+          },
+          {
+            "text": "\t\t\t\tconst wikiLink = &#96;[[${file.path}]]&#96;;",
+            "lineNumber": 12
+          },
+          {
+            "text": "\t\t\t\tnavigator.clipboard.writeText(wikiLink).then(",
+            "lineNumber": 13
+          },
+          {
+            "text": "\t\t\t\t\t() =&gt; new Notice('Copied file link to clipboard'),",
+            "lineNumber": 14
+          },
+          {
+            "text": "\t\t\t\t\t() =&gt; new Notice('Failed to copy to clipboard')",
+            "lineNumber": 15
+          },
+          {
+            "text": "\t\t\t\t);",
+            "lineNumber": 16
+          },
+          {
+            "text": "\t\t\t\treturn true;",
+            "lineNumber": 17
+          },
+          {
+            "text": "\t\t\t}",
+            "lineNumber": 18
+          },
+          {
+            "text": "\t\t});",
+            "lineNumber": 19
+          },
+          {
+            "text": "\t}",
+            "lineNumber": 20
+          },
+          {
+            "lineNumber": 21
+          },
+          {
+            "text": "\tonunload() {",
+            "lineNumber": 22
+          },
+          {
+            "text": "\t}",
+            "lineNumber": 23
+          },
+          {
+            "text": "}",
+            "lineNumber": 24,
+            "isSignature": true
+          }
+        ]
+      },
+      "score": 0.25665950775146484
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./AGENTS.md",
+        "range": {
+          "startPosition": {
+            "line": 243
+          },
+          "endPosition": {
+            "line": 251
+          }
+        },
+        "contents": "## References\n\n- Obsidian Copy File Link Hotkey: https://github.com/obsidianmd/copy-file-link-hotkey\n- API documentation: https://docs.obsidian.md\n- Developer policies: https://docs.obsidian.md/Developer+policies\n- Plugin guidelines: https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines\n- Style guide: https://help.obsidian.md/style-guide",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "## References",
+            "lineNumber": 245
+          },
+          {
+            "lineNumber": 246
+          },
+          {
+            "text": "- Obsidian Copy File Link Hotkey: https://github.com/obsidianmd/copy-file-link-hotkey",
+            "lineNumber": 247
+          },
+          {
+            "text": "- API documentation: https://docs.obsidian.md",
+            "lineNumber": 248
+          },
+          {
+            "text": "- Developer policies: https://docs.obsidian.md/Developer+policies",
+            "lineNumber": 249
+          },
+          {
+            "text": "- Plugin guidelines: https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines",
+            "lineNumber": 250
+          },
+          {
+            "text": "- Style guide: https://help.obsidian.md/style-guide",
+            "lineNumber": 251
+          }
+        ]
+      },
+      "score": 0.20800775289535522
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./README.md",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 33
+          }
+        },
+        "contents": "# Obsidian Copy File Link Hotkey\n\nThis is a Copy File Link Hotkey for Obsidian (https://obsidian.md).\n\nThis project uses TypeScript to provide type checking and documentation.\nThe repo depends on the latest plugin API (obsidian.d.ts) in TypeScript Definition format, which contains TSDoc comments describing what it does.\n\nThis Copy File Link Hotkey demonstrates some of the basic functionality the plugin API can do.\n- Adds a ribbon icon, which shows a Notice when clicked.\n- Adds a command \"Open modal (simple)\" which opens a Modal.\n- Adds a plugin setting tab to the settings page.\n- Registers a global click event and output 'click' to the console.\n- Registers a global interval which logs 'setInterval' to the console.\n\n## First time developing plugins?\n\nQuick starting guide for new plugin devs:\n\n- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.\n- Make a copy of this repo as a template with the \"Use this template\" button (login to GitHub if you don't see it).\n- Clone your repo to a local development folder. For convenience, you can place this folder in your &#96;.obsidian/plugins/your-plugin-name&#96; folder.\n- Install NodeJS, then run &#96;npm i&#96; in the command line under your repo folder.\n- Run &#96;npm run dev&#96; to compile your plugin from &#96;main.ts&#96; to &#96;main.js&#96;.\n- Make changes to &#96;main.ts&#96; (or create new &#96;.ts&#96; files). Those changes should be automatically compiled into &#96;main.js&#96;.\n- Reload Obsidian to load the new version of your plugin.\n- Enable plugin in settings window.\n- For updates to the Obsidian API run &#96;npm update&#96; in the command line under your repo folder.\n\n## Releasing new releases\n\n- Update your &#96;manifest.json&#96; with your new version number, such as &#96;1.0.1&#96;, and the minimum Obsidian version required for your latest release.\n- Update your &#96;versions.json&#96; file with &#96;\"new-plugin-version\": \"minimum-obsidian-version\"&#96; so older versions of Obsidian can download an older version of your plugin that's compatible.\n- Create new GitHub release using your new version number as the \"Tag version\". Use the exact version number, don't include a prefix &#96;v&#96;. See here for an example: https://github.com/obsidianmd/copy-file-link-hotkey/releases",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "# Obsidian Copy File Link Hotkey",
+            "lineNumber": 1
+          },
+          {
+            "lineNumber": 2
+          },
+          {
+            "text": "This is a Copy File Link Hotkey for Obsidian (https://obsidian.md).",
+            "lineNumber": 3
+          },
+          {
+            "lineNumber": 4
+          },
+          {
+            "text": "This project uses TypeScript to provide type checking and documentation.",
+            "lineNumber": 5
+          },
+          {
+            "text": "The repo depends on the latest plugin API (obsidian.d.ts) in TypeScript Definition format, which contains TSDoc comments describing what it does.",
+            "lineNumber": 6
+          },
+          {
+            "lineNumber": 7
+          },
+          {
+            "text": "This Copy File Link Hotkey demonstrates some of the basic functionality the plugin API can do.",
+            "lineNumber": 8
+          },
+          {
+            "text": "- Adds a ribbon icon, which shows a Notice when clicked.",
+            "lineNumber": 9
+          },
+          {
+            "text": "- Adds a command \"Open modal (simple)\" which opens a Modal.",
+            "lineNumber": 10
+          },
+          {
+            "text": "- Adds a plugin setting tab to the settings page.",
+            "lineNumber": 11
+          },
+          {
+            "text": "- Registers a global click event and output 'click' to the console.",
+            "lineNumber": 12
+          },
+          {
+            "text": "- Registers a global interval which logs 'setInterval' to the console.",
+            "lineNumber": 13
+          },
+          {
+            "lineNumber": 14
+          },
+          {
+            "text": "## First time developing plugins?",
+            "lineNumber": 15
+          },
+          {
+            "lineNumber": 16
+          },
+          {
+            "text": "Quick starting guide for new plugin devs:",
+            "lineNumber": 17
+          },
+          {
+            "lineNumber": 18
+          },
+          {
+            "text": "- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.",
+            "lineNumber": 19
+          },
+          {
+            "text": "- Make a copy of this repo as a template with the \"Use this template\" button (login to GitHub if you don't see it).",
+            "lineNumber": 20
+          },
+          {
+            "text": "- Clone your repo to a local development folder. For convenience, you can place this folder in your &#96;.obsidian/plugins/your-plugin-name&#96; folder.",
+            "lineNumber": 21
+          },
+          {
+            "text": "- Install NodeJS, then run &#96;npm i&#96; in the command line under your repo folder.",
+            "lineNumber": 22
+          },
+          {
+            "text": "- Run &#96;npm run dev&#96; to compile your plugin from &#96;main.ts&#96; to &#96;main.js&#96;.",
+            "lineNumber": 23
+          },
+          {
+            "text": "- Make changes to &#96;main.ts&#96; (or create new &#96;.ts&#96; files). Those changes should be automatically compiled into &#96;main.js&#96;.",
+            "lineNumber": 24
+          },
+          {
+            "text": "- Reload Obsidian to load the new version of your plugin.",
+            "lineNumber": 25
+          },
+          {
+            "text": "- Enable plugin in settings window.",
+            "lineNumber": 26
+          },
+          {
+            "text": "- For updates to the Obsidian API run &#96;npm update&#96; in the command line under your repo folder.",
+            "lineNumber": 27
+          },
+          {
+            "lineNumber": 28
+          },
+          {
+            "text": "## Releasing new releases",
+            "lineNumber": 29
+          },
+          {
+            "lineNumber": 30
+          },
+          {
+            "text": "- Update your &#96;manifest.json&#96; with your new version number, such as &#96;1.0.1&#96;, and the minimum Obsidian version required for your latest release.",
+            "lineNumber": 31
+          },
+          {
+            "text": "- Update your &#96;versions.json&#96; file with &#96;\"new-plugin-version\": \"minimum-obsidian-version\"&#96; so older versions of Obsidian can download an older version of your plugin that's compatible.",
+            "lineNumber": 32
+          },
+          {
+            "text": "- Create new GitHub release using your new version number as the \"Tag version\". Use the exact version number, don't include a prefix &#96;v&#96;. See here for an example: https://github.com/obsidianmd/copy-file-link-hotkey/releases",
+            "lineNumber": 33
+          }
+        ]
+      },
+      "score": 0.19926095008850098
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./sendToNovelVault.sh",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 19
+          }
+        },
+        "contents": "# minor version bump\nnpm run build\n\n# create the current_release directory if it does not exist\nmkdir -p copy-file-link-hotkey\n\n# make a copy of the main.js, manifest.json, and styles.css files in another folder\ncp main.js copy-file-link-hotkey\ncp manifest.json copy-file-link-hotkey\ncp styles.css copy-file-link-hotkey\n# compress the current_release folder into a zip file\n# zip -r release.zip current_release\n\n# send to my novel folder\n# cp -r copy-file-link-hotkey /Users/caffae/Notes/Novel-Writing/.obsidian/plugins/\ncp -r copy-file-link-hotkey \"/Users/caffae/Notes/ZettelPublish (Content Creator V2 April 2025)/.obsidian/plugins/\"\n# echo \"Updated plugin in novel writing and zettelpublish folders\"\necho \"Updated plugin in zettelpublish folders\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "# minor version bump",
+            "lineNumber": 1
+          },
+          {
+            "text": "npm run build",
+            "lineNumber": 2
+          },
+          {
+            "lineNumber": 3
+          },
+          {
+            "text": "# create the current_release directory if it does not exist",
+            "lineNumber": 4
+          },
+          {
+            "text": "mkdir -p copy-file-link-hotkey",
+            "lineNumber": 5
+          },
+          {
+            "lineNumber": 6
+          },
+          {
+            "text": "# make a copy of the main.js, manifest.json, and styles.css files in another folder",
+            "lineNumber": 7
+          },
+          {
+            "text": "cp main.js copy-file-link-hotkey",
+            "lineNumber": 8
+          },
+          {
+            "text": "cp manifest.json copy-file-link-hotkey",
+            "lineNumber": 9
+          },
+          {
+            "text": "cp styles.css copy-file-link-hotkey",
+            "lineNumber": 10
+          },
+          {
+            "text": "# compress the current_release folder into a zip file",
+            "lineNumber": 11
+          },
+          {
+            "text": "# zip -r release.zip current_release",
+            "lineNumber": 12
+          },
+          {
+            "lineNumber": 13
+          },
+          {
+            "text": "# send to my novel folder",
+            "lineNumber": 14
+          },
+          {
+            "text": "# cp -r copy-file-link-hotkey /Users/caffae/Notes/Novel-Writing/.obsidian/plugins/",
+            "lineNumber": 15
+          },
+          {
+            "text": "cp -r copy-file-link-hotkey \"/Users/caffae/Notes/ZettelPublish (Content Creator V2 April 2025)/.obsidian/plugins/\"",
+            "lineNumber": 16
+          },
+          {
+            "text": "# echo \"Updated plugin in novel writing and zettelpublish folders\"",
+            "lineNumber": 17
+          },
+          {
+            "text": "echo \"Updated plugin in zettelpublish folders\"",
+            "lineNumber": 18
+          }
+        ]
+      },
+      "score": 0.15881919860839844
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./prepareForGitRelease.sh",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 39
+          }
+        },
+        "contents": "# minor version bump\nnpm version patch --no-git-tag-version\n\n# create the current_release directory if it does not exist\nmkdir -p copy-file-link-hotkey\n\n# make a copy of the main.js, manifest.json, and styles.css files in another folder\ncp main.js copy-file-link-hotkey\ncp manifest.json copy-file-link-hotkey\ncp styles.css copy-file-link-hotkey\n# compress the current_release folder into a zip file\n# zip -r release.zip current_release\n\n# send to my novel folder\ncp -r copy-file-link-hotkey /Users/caffae/Notes/Novel-Writing/.obsidian/plugins/\necho \"Updated plugin in novel writing folder\"\n\nzip -vr copy-file-link-hotkey.zip copy-file-link-hotkey -x \"*.DS_Store\"\n\nmv copy-file-link-hotkey.zip release.zip\n\n# remove the current_release folder\n# rm -rf copy-file-link-hotkey\n\n# Get the new version and create a tag without 'v' prefix\nVERSION=$(node -p \"require('./package.json').version\")\ngit add -A\nLASTCOMMIT=$(git log -1 --pretty=%B)\n# git commit -m \"Prepare for Git Release. Bump version to $VERSION\"\ngit commit -m \"Release version $VERSION, $LASTCOMMIT\"\ngit tag $VERSION\n# git push origin main\necho \"Pushing to main tag... \"\n# echo \"git push origin tag $VERSION\"\ngit push origin tag $VERSION\necho \"Creating a new release... \"\n# Create a new release on GitHub with the zip file and the last commit message\ngh release create $VERSION release.zip main.js styles.css manifest.json --title \"Release $VERSION\" --notes \"$LASTCOMMIT\"",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "# minor version bump",
+            "lineNumber": 1
+          },
+          {
+            "text": "npm version patch --no-git-tag-version",
+            "lineNumber": 2
+          },
+          {
+            "lineNumber": 3
+          },
+          {
+            "text": "# create the current_release directory if it does not exist",
+            "lineNumber": 4
+          },
+          {
+            "text": "mkdir -p copy-file-link-hotkey",
+            "lineNumber": 5
+          },
+          {
+            "lineNumber": 6
+          },
+          {
+            "text": "# make a copy of the main.js, manifest.json, and styles.css files in another folder",
+            "lineNumber": 7
+          },
+          {
+            "text": "cp main.js copy-file-link-hotkey",
+            "lineNumber": 8
+          },
+          {
+            "text": "cp manifest.json copy-file-link-hotkey",
+            "lineNumber": 9
+          },
+          {
+            "text": "cp styles.css copy-file-link-hotkey",
+            "lineNumber": 10
+          },
+          {
+            "text": "# compress the current_release folder into a zip file",
+            "lineNumber": 11
+          },
+          {
+            "text": "# zip -r release.zip current_release",
+            "lineNumber": 12
+          },
+          {
+            "lineNumber": 13
+          },
+          {
+            "text": "# send to my novel folder",
+            "lineNumber": 14
+          },
+          {
+            "text": "cp -r copy-file-link-hotkey /Users/caffae/Notes/Novel-Writing/.obsidian/plugins/",
+            "lineNumber": 15
+          },
+          {
+            "text": "echo \"Updated plugin in novel writing folder\"",
+            "lineNumber": 16
+          },
+          {
+            "lineNumber": 17
+          },
+          {
+            "text": "zip -vr copy-file-link-hotkey.zip copy-file-link-hotkey -x \"*.DS_Store\"",
+            "lineNumber": 18
+          },
+          {
+            "lineNumber": 19
+          },
+          {
+            "text": "mv copy-file-link-hotkey.zip release.zip",
+            "lineNumber": 20
+          },
+          {
+            "lineNumber": 21
+          },
+          {
+            "text": "# remove the current_release folder",
+            "lineNumber": 22
+          },
+          {
+            "text": "# rm -rf copy-file-link-hotkey",
+            "lineNumber": 23
+          },
+          {
+            "lineNumber": 24
+          },
+          {
+            "text": "# Get the new version and create a tag without 'v' prefix",
+            "lineNumber": 25
+          },
+          {
+            "text": "VERSION=$(node -p \"require('./package.json').version\")",
+            "lineNumber": 26
+          },
+          {
+            "text": "git add -A",
+            "lineNumber": 27
+          },
+          {
+            "text": "LASTCOMMIT=$(git log -1 --pretty=%B)",
+            "lineNumber": 28
+          },
+          {
+            "text": "# git commit -m \"Prepare for Git Release. Bump version to $VERSION\"",
+            "lineNumber": 29
+          },
+          {
+            "text": "git commit -m \"Release version $VERSION, $LASTCOMMIT\"",
+            "lineNumber": 30
+          },
+          {
+            "text": "git tag $VERSION",
+            "lineNumber": 31
+          },
+          {
+            "text": "# git push origin main",
+            "lineNumber": 32
+          },
+          {
+            "text": "echo \"Pushing to main tag... \"",
+            "lineNumber": 33
+          },
+          {
+            "text": "# echo \"git push origin tag $VERSION\"",
+            "lineNumber": 34
+          },
+          {
+            "text": "git push origin tag $VERSION",
+            "lineNumber": 35
+          },
+          {
+            "text": "echo \"Creating a new release... \"",
+            "lineNumber": 36
+          },
+          {
+            "text": "# Create a new release on GitHub with the zip file and the last commit message",
+            "lineNumber": 37
+          },
+          {
+            "text": "gh release create $VERSION release.zip main.js styles.css manifest.json --title \"Release $VERSION\" --notes \"$LASTCOMMIT\"",
+            "lineNumber": 38
+          }
+        ]
+      },
+      "score": 0.15550953149795532
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./manifest.json",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 11
+          }
+        },
+        "contents": "{\n\t\"id\": \"copy-file-link-hotkey\",\n\t\"name\": \"Copy File Link Hotkey\",\n\t\"version\": \"1.0.0\",\n\t\"minAppVersion\": \"1.7.7\",\n\t\"description\": \"This plugin allows you to copy the link of the current file to the clipboard using a hotkey in wikilink format.\",\n\t\"author\": \"Pamela Wang\",\n\t\"authorUrl\": \"https://github.com/Caffa\",\n\t\"fundingUrl\": \"https://ko-fi.com/pamelawang_mwahacookie\",\n\t\"isDesktopOnly\": false\n}",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "{",
+            "lineNumber": 1
+          },
+          {
+            "text": "\t\"id\": \"copy-file-link-hotkey\",",
+            "lineNumber": 2
+          },
+          {
+            "text": "\t\"name\": \"Copy File Link Hotkey\",",
+            "lineNumber": 3
+          },
+          {
+            "text": "\t\"version\": \"1.0.0\",",
+            "lineNumber": 4
+          },
+          {
+            "text": "\t\"minAppVersion\": \"1.7.7\",",
+            "lineNumber": 5
+          },
+          {
+            "text": "\t\"description\": \"This plugin allows you to copy the link of the current file to the clipboard using a hotkey in wikilink format.\",",
+            "lineNumber": 6
+          },
+          {
+            "text": "\t\"author\": \"Pamela Wang\",",
+            "lineNumber": 7
+          },
+          {
+            "text": "\t\"authorUrl\": \"https://github.com/Caffa\",",
+            "lineNumber": 8
+          },
+          {
+            "text": "\t\"fundingUrl\": \"https://ko-fi.com/pamelawang_mwahacookie\",",
+            "lineNumber": 9
+          },
+          {
+            "text": "\t\"isDesktopOnly\": false",
+            "lineNumber": 10
+          },
+          {
+            "text": "}",
+            "lineNumber": 11
+          }
+        ]
+      },
+      "score": 0.15282399952411652
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./copy-file-link-hotkey/manifest.json",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 11
+          }
+        },
+        "contents": "{\n\t\"id\": \"copy-file-link-hotkey\",\n\t\"name\": \"Copy File Link Hotkey\",\n\t\"version\": \"1.0.0\",\n\t\"minAppVersion\": \"1.7.7\",\n\t\"description\": \"This plugin allows you to copy the link of the current file to the clipboard using a hotkey in wikilink format.\",\n\t\"author\": \"Pamela Wang\",\n\t\"authorUrl\": \"https://github.com/Caffa\",\n\t\"fundingUrl\": \"https://ko-fi.com/pamelawang_mwahacookie\",\n\t\"isDesktopOnly\": false\n}",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "{",
+            "lineNumber": 1
+          },
+          {
+            "text": "\t\"id\": \"copy-file-link-hotkey\",",
+            "lineNumber": 2
+          },
+          {
+            "text": "\t\"name\": \"Copy File Link Hotkey\",",
+            "lineNumber": 3
+          },
+          {
+            "text": "\t\"version\": \"1.0.0\",",
+            "lineNumber": 4
+          },
+          {
+            "text": "\t\"minAppVersion\": \"1.7.7\",",
+            "lineNumber": 5
+          },
+          {
+            "text": "\t\"description\": \"This plugin allows you to copy the link of the current file to the clipboard using a hotkey in wikilink format.\",",
+            "lineNumber": 6
+          },
+          {
+            "text": "\t\"author\": \"Pamela Wang\",",
+            "lineNumber": 7
+          },
+          {
+            "text": "\t\"authorUrl\": \"https://github.com/Caffa\",",
+            "lineNumber": 8
+          },
+          {
+            "text": "\t\"fundingUrl\": \"https://ko-fi.com/pamelawang_mwahacookie\",",
+            "lineNumber": 9
+          },
+          {
+            "text": "\t\"isDesktopOnly\": false",
+            "lineNumber": 10
+          },
+          {
+            "text": "}",
+            "lineNumber": 11
+          }
+        ]
+      },
+      "score": 0.14418035745620728
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./README.md",
+        "range": {
+          "startPosition": {
+            "line": 60
+          },
+          "endPosition": {
+            "line": 90
+          }
+        },
+        "contents": "- Together with a custom eslint [plugin](https://github.com/obsidianmd/eslint-plugin) for Obsidan specific code guidelines.\n- A GitHub action is preconfigured to automatically lint every commit on all branches.\n\n## Funding URL\n\nYou can include funding URLs where people who use your plugin can financially support it.\n\nThe simple way is to set the &#96;fundingUrl&#96; field to your link in your &#96;manifest.json&#96; file:\n\n&#96;&#96;&#96;json\n{\n    \"fundingUrl\": \"https://buymeacoffee.com\"\n}\n&#96;&#96;&#96;\n\nIf you have multiple URLs, you can also do:\n\n&#96;&#96;&#96;json\n{\n    \"fundingUrl\": {\n        \"Buy Me a Coffee\": \"https://buymeacoffee.com\",\n        \"GitHub Sponsor\": \"https://github.com/sponsors\",\n        \"Patreon\": \"https://www.patreon.com/\"\n    }\n}\n&#96;&#96;&#96;\n\n## API Documentation\n\nSee https://docs.obsidian.md",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "- Together with a custom eslint [plugin](https://github.com/obsidianmd/eslint-plugin) for Obsidan specific code guidelines.",
+            "lineNumber": 61
+          },
+          {
+            "text": "- A GitHub action is preconfigured to automatically lint every commit on all branches.",
+            "lineNumber": 62
+          },
+          {
+            "lineNumber": 63
+          },
+          {
+            "text": "## Funding URL",
+            "lineNumber": 64
+          },
+          {
+            "lineNumber": 65
+          },
+          {
+            "text": "You can include funding URLs where people who use your plugin can financially support it.",
+            "lineNumber": 66
+          },
+          {
+            "lineNumber": 67
+          },
+          {
+            "text": "The simple way is to set the &#96;fundingUrl&#96; field to your link in your &#96;manifest.json&#96; file:",
+            "lineNumber": 68
+          },
+          {
+            "lineNumber": 69
+          },
+          {
+            "text": "&#96;&#96;&#96;json",
+            "lineNumber": 70
+          },
+          {
+            "text": "{",
+            "lineNumber": 71
+          },
+          {
+            "text": "    \"fundingUrl\": \"https://buymeacoffee.com\"",
+            "lineNumber": 72
+          },
+          {
+            "text": "}",
+            "lineNumber": 73
+          },
+          {
+            "text": "&#96;&#96;&#96;",
+            "lineNumber": 74
+          },
+          {
+            "lineNumber": 75
+          },
+          {
+            "text": "If you have multiple URLs, you can also do:",
+            "lineNumber": 76
+          },
+          {
+            "lineNumber": 77
+          },
+          {
+            "text": "&#96;&#96;&#96;json",
+            "lineNumber": 78
+          },
+          {
+            "text": "{",
+            "lineNumber": 79
+          },
+          {
+            "text": "    \"fundingUrl\": {",
+            "lineNumber": 80
+          },
+          {
+            "text": "        \"Buy Me a Coffee\": \"https://buymeacoffee.com\",",
+            "lineNumber": 81
+          },
+          {
+            "text": "        \"GitHub Sponsor\": \"https://github.com/sponsors\",",
+            "lineNumber": 82
+          },
+          {
+            "text": "        \"Patreon\": \"https://www.patreon.com/\"",
+            "lineNumber": 83
+          },
+          {
+            "text": "    }",
+            "lineNumber": 84
+          },
+          {
+            "text": "}",
+            "lineNumber": 85
+          },
+          {
+            "text": "&#96;&#96;&#96;",
+            "lineNumber": 86
+          },
+          {
+            "lineNumber": 87
+          },
+          {
+            "text": "## API Documentation",
+            "lineNumber": 88
+          },
+          {
+            "lineNumber": 89
+          },
+          {
+            "text": "See https://docs.obsidian.md",
+            "lineNumber": 90
+          }
+        ]
+      },
+      "score": 0.1371096968650818
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./package.json",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 29
+          }
+        },
+        "contents": "{\n\t\"name\": \"copy-file-link-hotkey\",\n\t\"version\": \"1.0.0\",\n\t\"description\": \"This is a Copy File Link Hotkey for Obsidian (https://obsidian.md)\",\n\t\"main\": \"main.js\",\n\t\"type\": \"module\",\n\t\"scripts\": {\n\t\t\"dev\": \"node esbuild.config.mjs\",\n\t\t\"build\": \"tsc -noEmit -skipLibCheck &amp;&amp; node esbuild.config.mjs production\",\n\t\t\"version\": \"node version-bump.mjs &amp;&amp; git add manifest.json versions.json\",\n\t\t\"lint\": \"eslint .\"\n\t},\n\t\"keywords\": [],\n\t\"license\": \"0-BSD\",\n\t\"devDependencies\": {\n\t\t\"@types/node\": \"^16.11.6\",\n\t\t\"esbuild\": \"0.25.5\",\n\t\t\"eslint-plugin-obsidianmd\": \"0.1.9\",\n\t\t\"globals\": \"14.0.0\",\n\t\t\"tslib\": \"2.4.0\",\n\t\t\"typescript\": \"^5.8.3\",\n\t\t\"typescript-eslint\": \"8.35.1\",\n\t\t\"@eslint/js\": \"9.30.1\",\n\t\t\"jiti\": \"2.6.1\"\n\t},\n\t\"dependencies\": {\n\t\t\"obsidian\": \"latest\"\n\t}\n}",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "{",
+            "lineNumber": 1
+          },
+          {
+            "text": "\t\"name\": \"copy-file-link-hotkey\",",
+            "lineNumber": 2
+          },
+          {
+            "text": "\t\"version\": \"1.0.0\",",
+            "lineNumber": 3
+          },
+          {
+            "text": "\t\"description\": \"This is a Copy File Link Hotkey for Obsidian (https://obsidian.md)\",",
+            "lineNumber": 4
+          },
+          {
+            "text": "\t\"main\": \"main.js\",",
+            "lineNumber": 5
+          },
+          {
+            "text": "\t\"type\": \"module\",",
+            "lineNumber": 6
+          },
+          {
+            "text": "\t\"scripts\": {",
+            "lineNumber": 7
+          },
+          {
+            "text": "\t\t\"dev\": \"node esbuild.config.mjs\",",
+            "lineNumber": 8
+          },
+          {
+            "text": "\t\t\"build\": \"tsc -noEmit -skipLibCheck &amp;&amp; node esbuild.config.mjs production\",",
+            "lineNumber": 9
+          },
+          {
+            "text": "\t\t\"version\": \"node version-bump.mjs &amp;&amp; git add manifest.json versions.json\",",
+            "lineNumber": 10
+          },
+          {
+            "text": "\t\t\"lint\": \"eslint .\"",
+            "lineNumber": 11
+          },
+          {
+            "text": "\t},",
+            "lineNumber": 12
+          },
+          {
+            "text": "\t\"keywords\": [],",
+            "lineNumber": 13
+          },
+          {
+            "text": "\t\"license\": \"0-BSD\",",
+            "lineNumber": 14
+          },
+          {
+            "text": "\t\"devDependencies\": {",
+            "lineNumber": 15
+          },
+          {
+            "text": "\t\t\"@types/node\": \"^16.11.6\",",
+            "lineNumber": 16
+          },
+          {
+            "text": "\t\t\"esbuild\": \"0.25.5\",",
+            "lineNumber": 17
+          },
+          {
+            "text": "\t\t\"eslint-plugin-obsidianmd\": \"0.1.9\",",
+            "lineNumber": 18
+          },
+          {
+            "text": "\t\t\"globals\": \"14.0.0\",",
+            "lineNumber": 19
+          },
+          {
+            "text": "\t\t\"tslib\": \"2.4.0\",",
+            "lineNumber": 20
+          },
+          {
+            "text": "\t\t\"typescript\": \"^5.8.3\",",
+            "lineNumber": 21
+          },
+          {
+            "text": "\t\t\"typescript-eslint\": \"8.35.1\",",
+            "lineNumber": 22
+          },
+          {
+            "text": "\t\t\"@eslint/js\": \"9.30.1\",",
+            "lineNumber": 23
+          },
+          {
+            "text": "\t\t\"jiti\": \"2.6.1\"",
+            "lineNumber": 24
+          },
+          {
+            "text": "\t},",
+            "lineNumber": 25
+          },
+          {
+            "text": "\t\"dependencies\": {",
+            "lineNumber": 26
+          },
+          {
+            "text": "\t\t\"obsidian\": \"latest\"",
+            "lineNumber": 27
+          },
+          {
+            "text": "\t}",
+            "lineNumber": 28
+          },
+          {
+            "text": "}",
+            "lineNumber": 29
+          }
+        ]
+      },
+      "score": 0.13582099974155426
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./AGENTS.md",
+        "range": {
+          "startPosition": {
+            "line": 93
+          },
+          "endPosition": {
+            "line": 128
+          }
+        },
+        "contents": "- Use stable command IDs; avoid renaming once released.\n\n## Versioning &amp; releases\n\n- Bump &#96;version&#96; in &#96;manifest.json&#96; (SemVer) and update &#96;versions.json&#96; to map plugin version → minimum app version.\n- Create a GitHub release whose tag exactly matches &#96;manifest.json&#96;'s &#96;version&#96;. Do not use a leading &#96;v&#96;.\n- Attach &#96;manifest.json&#96;, &#96;main.js&#96;, and &#96;styles.css&#96; (if present) to the release as individual assets.\n- After the initial release, follow the process to add/update your plugin in the community catalog as required.\n\n## Security, privacy, and compliance\n\nFollow Obsidian's **Developer Policies** and **Plugin Guidelines**. In particular:\n\n- Default to local/offline operation. Only make network requests when essential to the feature.\n- No hidden telemetry. If you collect optional analytics or call third-party services, require explicit opt-in and document clearly in &#96;README.md&#96; and in settings.\n- Never execute remote code, fetch and eval scripts, or auto-update plugin code outside of normal releases.\n- Minimize scope: read/write only what's necessary inside the vault. Do not access files outside the vault.\n- Clearly disclose any external services used, data sent, and risks.\n- Respect user privacy. Do not collect vault contents, filenames, or personal information unless absolutely necessary and explicitly consented.\n- Avoid deceptive patterns, ads, or spammy notifications.\n- Register and clean up all DOM, app, and interval listeners using the provided &#96;register*&#96; helpers so the plugin unloads safely.\n\n## UX &amp; copy guidelines (for UI text, commands, settings)\n\n- Prefer sentence case for headings, buttons, and titles.\n- Use clear, action-oriented imperatives in step-by-step copy.\n- Use **bold** to indicate literal UI labels. Prefer \"select\" for interactions.\n- Use arrow notation for navigation: **Settings → Community plugins**.\n- Keep in-app strings short, consistent, and free of jargon.\n\n## Performance\n\n- Keep startup light. Defer heavy work until needed.\n- Avoid long-running tasks during &#96;onload&#96;; use lazy initialization.\n- Batch disk access and avoid excessive vault scans.",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "- Use stable command IDs; avoid renaming once released.",
+            "lineNumber": 94
+          },
+          {
+            "lineNumber": 95
+          },
+          {
+            "text": "## Versioning &amp; releases",
+            "lineNumber": 96
+          },
+          {
+            "lineNumber": 97
+          },
+          {
+            "text": "- Bump &#96;version&#96; in &#96;manifest.json&#96; (SemVer) and update &#96;versions.json&#96; to map plugin version → minimum app version.",
+            "lineNumber": 98
+          },
+          {
+            "text": "- Create a GitHub release whose tag exactly matches &#96;manifest.json&#96;'s &#96;version&#96;. Do not use a leading &#96;v&#96;.",
+            "lineNumber": 99
+          },
+          {
+            "text": "- Attach &#96;manifest.json&#96;, &#96;main.js&#96;, and &#96;styles.css&#96; (if present) to the release as individual assets.",
+            "lineNumber": 100
+          },
+          {
+            "text": "- After the initial release, follow the process to add/update your plugin in the community catalog as required.",
+            "lineNumber": 101
+          },
+          {
+            "lineNumber": 102
+          },
+          {
+            "text": "## Security, privacy, and compliance",
+            "lineNumber": 103
+          },
+          {
+            "lineNumber": 104
+          },
+          {
+            "text": "Follow Obsidian's **Developer Policies** and **Plugin Guidelines**. In particular:",
+            "lineNumber": 105
+          },
+          {
+            "lineNumber": 106
+          },
+          {
+            "text": "- Default to local/offline operation. Only make network requests when essential to the feature.",
+            "lineNumber": 107
+          },
+          {
+            "text": "- No hidden telemetry. If you collect optional analytics or call third-party services, require explicit opt-in and document clearly in &#96;README.md&#96; and in settings.",
+            "lineNumber": 108
+          },
+          {
+            "text": "- Never execute remote code, fetch and eval scripts, or auto-update plugin code outside of normal releases.",
+            "lineNumber": 109
+          },
+          {
+            "text": "- Minimize scope: read/write only what's necessary inside the vault. Do not access files outside the vault.",
+            "lineNumber": 110
+          },
+          {
+            "text": "- Clearly disclose any external services used, data sent, and risks.",
+            "lineNumber": 111
+          },
+          {
+            "text": "- Respect user privacy. Do not collect vault contents, filenames, or personal information unless absolutely necessary and explicitly consented.",
+            "lineNumber": 112
+          },
+          {
+            "text": "- Avoid deceptive patterns, ads, or spammy notifications.",
+            "lineNumber": 113
+          },
+          {
+            "text": "- Register and clean up all DOM, app, and interval listeners using the provided &#96;register*&#96; helpers so the plugin unloads safely.",
+            "lineNumber": 114
+          },
+          {
+            "lineNumber": 115
+          },
+          {
+            "text": "## UX &amp; copy guidelines (for UI text, commands, settings)",
+            "lineNumber": 116
+          },
+          {
+            "lineNumber": 117
+          },
+          {
+            "text": "- Prefer sentence case for headings, buttons, and titles.",
+            "lineNumber": 118
+          },
+          {
+            "text": "- Use clear, action-oriented imperatives in step-by-step copy.",
+            "lineNumber": 119
+          },
+          {
+            "text": "- Use **bold** to indicate literal UI labels. Prefer \"select\" for interactions.",
+            "lineNumber": 120
+          },
+          {
+            "text": "- Use arrow notation for navigation: **Settings → Community plugins**.",
+            "lineNumber": 121
+          },
+          {
+            "text": "- Keep in-app strings short, consistent, and free of jargon.",
+            "lineNumber": 122
+          },
+          {
+            "lineNumber": 123
+          },
+          {
+            "text": "## Performance",
+            "lineNumber": 124
+          },
+          {
+            "lineNumber": 125
+          },
+          {
+            "text": "- Keep startup light. Defer heavy work until needed.",
+            "lineNumber": 126
+          },
+          {
+            "text": "- Avoid long-running tasks during &#96;onload&#96;; use lazy initialization.",
+            "lineNumber": 127
+          },
+          {
+            "text": "- Batch disk access and avoid excessive vault scans.",
+            "lineNumber": 128
+          }
+        ]
+      },
+      "score": 0.13231444358825684
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./AGENTS.md",
+        "range": {
+          "startPosition": {
+            "line": 169
+          },
+          "endPosition": {
+            "line": 248
+          }
+        },
+        "contents": "export default class MyPlugin extends Plugin {\n  settings: MySettings;\n\n  async onload() {\n    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());\n    registerCommands(this);\n  }\n}\n&#96;&#96;&#96;\n\n**settings.ts**:\n&#96;&#96;&#96;ts\nexport interface MySettings {\n  enabled: boolean;\n  apiKey: string;\n}\n\nexport const DEFAULT_SETTINGS: MySettings = {\n  enabled: true,\n  apiKey: \"\",\n};\n&#96;&#96;&#96;\n\n**commands/index.ts**:\n&#96;&#96;&#96;ts\nimport { Plugin } from \"obsidian\";\nimport { doSomething } from \"./my-command\";\n\nexport function registerCommands(plugin: Plugin) {\n  plugin.addCommand({\n    id: \"do-something\",\n    name: \"Do something\",\n    callback: () =&gt; doSomething(plugin),\n  });\n}\n&#96;&#96;&#96;\n\n### Add a command\n\n&#96;&#96;&#96;ts\nthis.addCommand({\n  id: \"your-command-id\",\n  name: \"Do the thing\",\n  callback: () =&gt; this.doTheThing(),\n});\n&#96;&#96;&#96;\n\n### Persist settings\n\n&#96;&#96;&#96;ts\ninterface MySettings { enabled: boolean }\nconst DEFAULT_SETTINGS: MySettings = { enabled: true };\n\nasync onload() {\n  this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());\n  await this.saveData(this.settings);\n}\n&#96;&#96;&#96;\n\n### Register listeners safely\n\n&#96;&#96;&#96;ts\nthis.registerEvent(this.app.workspace.on(\"file-open\", f =&gt; { /* ... */ }));\nthis.registerDomEvent(window, \"resize\", () =&gt; { /* ... */ });\nthis.registerInterval(window.setInterval(() =&gt; { /* ... */ }, 1000));\n&#96;&#96;&#96;\n\n## Troubleshooting\n\n- Plugin doesn't load after build: ensure &#96;main.js&#96; and &#96;manifest.json&#96; are at the top level of the plugin folder under &#96;&lt;Vault&gt;/.obsidian/plugins/&lt;plugin-id&gt;/&#96;.\n- Build issues: if &#96;main.js&#96; is missing, run &#96;npm run build&#96; or &#96;npm run dev&#96; to compile your TypeScript source code.\n- Commands not appearing: verify &#96;addCommand&#96; runs after &#96;onload&#96; and IDs are unique.\n- Settings not persisting: ensure &#96;loadData&#96;/&#96;saveData&#96; are awaited and you re-render the UI after changes.\n- Mobile-only issues: confirm you're not using desktop-only APIs; check &#96;isDesktopOnly&#96; and adjust.\n\n## References\n\n- Obsidian Copy File Link Hotkey: https://github.com/obsidianmd/copy-file-link-hotkey\n- API documentation: https://docs.obsidian.md",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "export default class MyPlugin extends Plugin {",
+            "lineNumber": 170
+          },
+          {
+            "text": "  settings: MySettings;",
+            "lineNumber": 171
+          },
+          {
+            "lineNumber": 172
+          },
+          {
+            "text": "  async onload() {",
+            "lineNumber": 173
+          },
+          {
+            "text": "    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());",
+            "lineNumber": 174
+          },
+          {
+            "text": "    registerCommands(this);",
+            "lineNumber": 175
+          },
+          {
+            "text": "  }",
+            "lineNumber": 176
+          },
+          {
+            "text": "}",
+            "lineNumber": 177
+          },
+          {
+            "text": "&#96;&#96;&#96;",
+            "lineNumber": 178
+          },
+          {
+            "lineNumber": 179
+          },
+          {
+            "text": "**settings.ts**:",
+            "lineNumber": 180
+          },
+          {
+            "text": "&#96;&#96;&#96;ts",
+            "lineNumber": 181
+          },
+          {
+            "text": "export interface MySettings {",
+            "lineNumber": 182
+          },
+          {
+            "text": "  enabled: boolean;",
+            "lineNumber": 183
+          },
+          {
+            "text": "  apiKey: string;",
+            "lineNumber": 184
+          },
+          {
+            "text": "}",
+            "lineNumber": 185
+          },
+          {
+            "lineNumber": 186
+          },
+          {
+            "text": "export const DEFAULT_SETTINGS: MySettings = {",
+            "lineNumber": 187
+          },
+          {
+            "text": "  enabled: true,",
+            "lineNumber": 188
+          },
+          {
+            "text": "  apiKey: \"\",",
+            "lineNumber": 189
+          },
+          {
+            "text": "};",
+            "lineNumber": 190
+          },
+          {
+            "text": "&#96;&#96;&#96;",
+            "lineNumber": 191
+          },
+          {
+            "lineNumber": 192
+          },
+          {
+            "text": "**commands/index.ts**:",
+            "lineNumber": 193
+          },
+          {
+            "text": "&#96;&#96;&#96;ts",
+            "lineNumber": 194
+          },
+          {
+            "text": "import { Plugin } from \"obsidian\";",
+            "lineNumber": 195
+          },
+          {
+            "text": "import { doSomething } from \"./my-command\";",
+            "lineNumber": 196
+          },
+          {
+            "lineNumber": 197
+          },
+          {
+            "text": "export function registerCommands(plugin: Plugin) {",
+            "lineNumber": 198
+          },
+          {
+            "text": "  plugin.addCommand({",
+            "lineNumber": 199
+          },
+          {
+            "text": "    id: \"do-something\",",
+            "lineNumber": 200
+          },
+          {
+            "text": "    name: \"Do something\",",
+            "lineNumber": 201
+          },
+          {
+            "text": "    callback: () =&gt; doSomething(plugin),",
+            "lineNumber": 202
+          },
+          {
+            "text": "  });",
+            "lineNumber": 203
+          },
+          {
+            "text": "}",
+            "lineNumber": 204
+          },
+          {
+            "text": "&#96;&#96;&#96;",
+            "lineNumber": 205
+          },
+          {
+            "lineNumber": 206
+          },
+          {
+            "text": "### Add a command",
+            "lineNumber": 207
+          },
+          {
+            "lineNumber": 208
+          },
+          {
+            "text": "&#96;&#96;&#96;ts",
+            "lineNumber": 209
+          },
+          {
+            "text": "this.addCommand({",
+            "lineNumber": 210
+          },
+          {
+            "text": "  id: \"your-command-id\",",
+            "lineNumber": 211
+          },
+          {
+            "text": "  name: \"Do the thing\",",
+            "lineNumber": 212
+          },
+          {
+            "text": "  callback: () =&gt; this.doTheThing(),",
+            "lineNumber": 213
+          },
+          {
+            "text": "});",
+            "lineNumber": 214
+          },
+          {
+            "text": "&#96;&#96;&#96;",
+            "lineNumber": 215
+          },
+          {
+            "lineNumber": 216
+          },
+          {
+            "text": "### Persist settings",
+            "lineNumber": 217
+          },
+          {
+            "lineNumber": 218
+          },
+          {
+            "text": "&#96;&#96;&#96;ts",
+            "lineNumber": 219
+          },
+          {
+            "text": "interface MySettings { enabled: boolean }",
+            "lineNumber": 220
+          },
+          {
+            "text": "const DEFAULT_SETTINGS: MySettings = { enabled: true };",
+            "lineNumber": 221
+          },
+          {
+            "lineNumber": 222
+          },
+          {
+            "text": "async onload() {",
+            "lineNumber": 223
+          },
+          {
+            "text": "  this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());",
+            "lineNumber": 224
+          },
+          {
+            "text": "  await this.saveData(this.settings);",
+            "lineNumber": 225
+          },
+          {
+            "text": "}",
+            "lineNumber": 226
+          },
+          {
+            "text": "&#96;&#96;&#96;",
+            "lineNumber": 227
+          },
+          {
+            "lineNumber": 228
+          },
+          {
+            "text": "### Register listeners safely",
+            "lineNumber": 229
+          },
+          {
+            "lineNumber": 230
+          },
+          {
+            "text": "&#96;&#96;&#96;ts",
+            "lineNumber": 231
+          },
+          {
+            "text": "this.registerEvent(this.app.workspace.on(\"file-open\", f =&gt; { /* ... */ }));",
+            "lineNumber": 232
+          },
+          {
+            "text": "this.registerDomEvent(window, \"resize\", () =&gt; { /* ... */ });",
+            "lineNumber": 233
+          },
+          {
+            "text": "this.registerInterval(window.setInterval(() =&gt; { /* ... */ }, 1000));",
+            "lineNumber": 234
+          },
+          {
+            "text": "&#96;&#96;&#96;",
+            "lineNumber": 235
+          },
+          {
+            "lineNumber": 236
+          },
+          {
+            "text": "## Troubleshooting",
+            "lineNumber": 237
+          },
+          {
+            "lineNumber": 238
+          },
+          {
+            "text": "- Plugin doesn't load after build: ensure &#96;main.js&#96; and &#96;manifest.json&#96; are at the top level of the plugin folder under &#96;&lt;Vault&gt;/.obsidian/plugins/&lt;plugin-id&gt;/&#96;.",
+            "lineNumber": 239
+          },
+          {
+            "text": "- Build issues: if &#96;main.js&#96; is missing, run &#96;npm run build&#96; or &#96;npm run dev&#96; to compile your TypeScript source code.",
+            "lineNumber": 240
+          },
+          {
+            "text": "- Commands not appearing: verify &#96;addCommand&#96; runs after &#96;onload&#96; and IDs are unique.",
+            "lineNumber": 241
+          },
+          {
+            "text": "- Settings not persisting: ensure &#96;loadData&#96;/&#96;saveData&#96; are awaited and you re-render the UI after changes.",
+            "lineNumber": 242
+          },
+          {
+            "text": "- Mobile-only issues: confirm you're not using desktop-only APIs; check &#96;isDesktopOnly&#96; and adjust.",
+            "lineNumber": 243
+          },
+          {
+            "lineNumber": 244
+          },
+          {
+            "text": "## References",
+            "lineNumber": 245
+          },
+          {
+            "lineNumber": 246
+          },
+          {
+            "text": "- Obsidian Copy File Link Hotkey: https://github.com/obsidianmd/copy-file-link-hotkey",
+            "lineNumber": 247
+          },
+          {
+            "text": "- API documentation: https://docs.obsidian.md",
+            "lineNumber": 248
+          }
+        ]
+      },
+      "score": 0.12593114376068115
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./AGENTS.md",
+        "range": {
+          "startPosition": {
+            "line": 46
+          },
+          "endPosition": {
+            "line": 95
+          }
+        },
+        "contents": "- **Example file structure**:\n  &#96;&#96;&#96;\n  src/\n    main.ts           # Plugin entry point, lifecycle management\n    settings.ts       # Settings interface and defaults\n    commands/         # Command implementations\n      command1.ts\n      command2.ts\n    ui/              # UI components, modals, views\n      modal.ts\n      view.ts\n    utils/           # Utility functions, helpers\n      helpers.ts\n      constants.ts\n    types.ts         # TypeScript interfaces and types\n  &#96;&#96;&#96;\n- **Do not commit build artifacts**: Never commit &#96;node_modules/&#96;, &#96;main.js&#96;, or other generated files to version control.\n- Keep the plugin small. Avoid large dependencies. Prefer browser-compatible packages.\n- Generated output should be placed at the plugin root or &#96;dist/&#96; depending on your build setup. Release artifacts must end up at the top level of the plugin folder in the vault (&#96;main.js&#96;, &#96;manifest.json&#96;, &#96;styles.css&#96;).\n\n## Manifest rules (&#96;manifest.json&#96;)\n\n- Must include (non-exhaustive):\n  - &#96;id&#96; (plugin ID; for local dev it should match the folder name)\n  - &#96;name&#96;\n  - &#96;version&#96; (Semantic Versioning &#96;x.y.z&#96;)\n  - &#96;minAppVersion&#96;\n  - &#96;description&#96;\n  - &#96;isDesktopOnly&#96; (boolean)\n  - Optional: &#96;author&#96;, &#96;authorUrl&#96;, &#96;fundingUrl&#96; (string or map)\n- Never change &#96;id&#96; after release. Treat it as stable API.\n- Keep &#96;minAppVersion&#96; accurate when using newer APIs.\n- Canonical requirements are coded here: https://github.com/obsidianmd/obsidian-releases/blob/master/.github/workflows/validate-plugin-entry.yml\n\n## Testing\n\n- Manual install for testing: copy &#96;main.js&#96;, &#96;manifest.json&#96;, &#96;styles.css&#96; (if any) to:\n  &#96;&#96;&#96;\n  &lt;Vault&gt;/.obsidian/plugins/&lt;plugin-id&gt;/\n  &#96;&#96;&#96;\n- Reload Obsidian and enable the plugin in **Settings → Community plugins**.\n\n## Commands &amp; settings\n\n- Any user-facing commands should be added via &#96;this.addCommand(...)&#96;.\n- If the plugin has configuration, provide a settings tab and sensible defaults.\n- Persist settings using &#96;this.loadData()&#96; / &#96;this.saveData()&#96;.\n- Use stable command IDs; avoid renaming once released.",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "- **Example file structure**:",
+            "lineNumber": 47
+          },
+          {
+            "text": "  &#96;&#96;&#96;",
+            "lineNumber": 48
+          },
+          {
+            "text": "  src/",
+            "lineNumber": 49
+          },
+          {
+            "text": "    main.ts           # Plugin entry point, lifecycle management",
+            "lineNumber": 50
+          },
+          {
+            "text": "    settings.ts       # Settings interface and defaults",
+            "lineNumber": 51
+          },
+          {
+            "text": "    commands/         # Command implementations",
+            "lineNumber": 52
+          },
+          {
+            "text": "      command1.ts",
+            "lineNumber": 53
+          },
+          {
+            "text": "      command2.ts",
+            "lineNumber": 54
+          },
+          {
+            "text": "    ui/              # UI components, modals, views",
+            "lineNumber": 55
+          },
+          {
+            "text": "      modal.ts",
+            "lineNumber": 56
+          },
+          {
+            "text": "      view.ts",
+            "lineNumber": 57
+          },
+          {
+            "text": "    utils/           # Utility functions, helpers",
+            "lineNumber": 58
+          },
+          {
+            "text": "      helpers.ts",
+            "lineNumber": 59
+          },
+          {
+            "text": "      constants.ts",
+            "lineNumber": 60
+          },
+          {
+            "text": "    types.ts         # TypeScript interfaces and types",
+            "lineNumber": 61
+          },
+          {
+            "text": "  &#96;&#96;&#96;",
+            "lineNumber": 62
+          },
+          {
+            "text": "- **Do not commit build artifacts**: Never commit &#96;node_modules/&#96;, &#96;main.js&#96;, or other generated files to version control.",
+            "lineNumber": 63
+          },
+          {
+            "text": "- Keep the plugin small. Avoid large dependencies. Prefer browser-compatible packages.",
+            "lineNumber": 64
+          },
+          {
+            "text": "- Generated output should be placed at the plugin root or &#96;dist/&#96; depending on your build setup. Release artifacts must end up at the top level of the plugin folder in the vault (&#96;main.js&#96;, &#96;manifest.json&#96;, &#96;styles.css&#96;).",
+            "lineNumber": 65
+          },
+          {
+            "lineNumber": 66
+          },
+          {
+            "text": "## Manifest rules (&#96;manifest.json&#96;)",
+            "lineNumber": 67
+          },
+          {
+            "lineNumber": 68
+          },
+          {
+            "text": "- Must include (non-exhaustive):",
+            "lineNumber": 69
+          },
+          {
+            "text": "  - &#96;id&#96; (plugin ID; for local dev it should match the folder name)",
+            "lineNumber": 70
+          },
+          {
+            "text": "  - &#96;name&#96;",
+            "lineNumber": 71
+          },
+          {
+            "text": "  - &#96;version&#96; (Semantic Versioning &#96;x.y.z&#96;)",
+            "lineNumber": 72
+          },
+          {
+            "text": "  - &#96;minAppVersion&#96;",
+            "lineNumber": 73
+          },
+          {
+            "text": "  - &#96;description&#96;",
+            "lineNumber": 74
+          },
+          {
+            "text": "  - &#96;isDesktopOnly&#96; (boolean)",
+            "lineNumber": 75
+          },
+          {
+            "text": "  - Optional: &#96;author&#96;, &#96;authorUrl&#96;, &#96;fundingUrl&#96; (string or map)",
+            "lineNumber": 76
+          },
+          {
+            "text": "- Never change &#96;id&#96; after release. Treat it as stable API.",
+            "lineNumber": 77
+          },
+          {
+            "text": "- Keep &#96;minAppVersion&#96; accurate when using newer APIs.",
+            "lineNumber": 78
+          },
+          {
+            "text": "- Canonical requirements are coded here: https://github.com/obsidianmd/obsidian-releases/blob/master/.github/workflows/validate-plugin-entry.yml",
+            "lineNumber": 79
+          },
+          {
+            "lineNumber": 80
+          },
+          {
+            "text": "## Testing",
+            "lineNumber": 81
+          },
+          {
+            "lineNumber": 82
+          },
+          {
+            "text": "- Manual install for testing: copy &#96;main.js&#96;, &#96;manifest.json&#96;, &#96;styles.css&#96; (if any) to:",
+            "lineNumber": 83
+          },
+          {
+            "text": "  &#96;&#96;&#96;",
+            "lineNumber": 84
+          },
+          {
+            "text": "  &lt;Vault&gt;/.obsidian/plugins/&lt;plugin-id&gt;/",
+            "lineNumber": 85
+          },
+          {
+            "text": "  &#96;&#96;&#96;",
+            "lineNumber": 86
+          },
+          {
+            "text": "- Reload Obsidian and enable the plugin in **Settings → Community plugins**.",
+            "lineNumber": 87
+          },
+          {
+            "lineNumber": 88
+          },
+          {
+            "text": "## Commands &amp; settings",
+            "lineNumber": 89
+          },
+          {
+            "lineNumber": 90
+          },
+          {
+            "text": "- Any user-facing commands should be added via &#96;this.addCommand(...)&#96;.",
+            "lineNumber": 91
+          },
+          {
+            "text": "- If the plugin has configuration, provide a settings tab and sensible defaults.",
+            "lineNumber": 92
+          },
+          {
+            "text": "- Persist settings using &#96;this.loadData()&#96; / &#96;this.saveData()&#96;.",
+            "lineNumber": 93
+          },
+          {
+            "text": "- Use stable command IDs; avoid renaming once released.",
+            "lineNumber": 94
+          }
+        ]
+      },
+      "score": 0.12583300471305847
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./README.md",
+        "range": {
+          "startPosition": {
+            "line": 31
+          },
+          "endPosition": {
+            "line": 62
+          }
+        },
+        "contents": "- Update your &#96;versions.json&#96; file with &#96;\"new-plugin-version\": \"minimum-obsidian-version\"&#96; so older versions of Obsidian can download an older version of your plugin that's compatible.\n- Create new GitHub release using your new version number as the \"Tag version\". Use the exact version number, don't include a prefix &#96;v&#96;. See here for an example: https://github.com/obsidianmd/copy-file-link-hotkey/releases\n- Upload the files &#96;manifest.json&#96;, &#96;main.js&#96;, &#96;styles.css&#96; as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.\n- Publish the release.\n\n&gt; You can simplify the version bump process by running &#96;npm version patch&#96;, &#96;npm version minor&#96; or &#96;npm version major&#96; after updating &#96;minAppVersion&#96; manually in &#96;manifest.json&#96;.\n&gt; The command will bump version in &#96;manifest.json&#96; and &#96;package.json&#96;, and add the entry for the new version to &#96;versions.json&#96;\n\n## Adding your plugin to the community plugin list\n\n- Check the [plugin guidelines](https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines).\n- Publish an initial version.\n- Make sure you have a &#96;README.md&#96; file in the root of your repo.\n- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.\n\n## How to use\n\n- Clone this repo.\n- Make sure your NodeJS is at least v16 (&#96;node --version&#96;).\n- &#96;npm i&#96; or &#96;yarn&#96; to install dependencies.\n- &#96;npm run dev&#96; to start compilation in watch mode.\n\n## Manually installing the plugin\n\n- Copy over &#96;main.js&#96;, &#96;styles.css&#96;, &#96;manifest.json&#96; to your vault &#96;VaultFolder/.obsidian/plugins/your-plugin-id/&#96;.\n\n## Improve code quality with eslint\n- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code.\n- This project already has eslint preconfigured, you can invoke a check by running&#96;npm run lint&#96;\n- Together with a custom eslint [plugin](https://github.com/obsidianmd/eslint-plugin) for Obsidan specific code guidelines.\n- A GitHub action is preconfigured to automatically lint every commit on all branches.",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "- Update your &#96;versions.json&#96; file with &#96;\"new-plugin-version\": \"minimum-obsidian-version\"&#96; so older versions of Obsidian can download an older version of your plugin that's compatible.",
+            "lineNumber": 32
+          },
+          {
+            "text": "- Create new GitHub release using your new version number as the \"Tag version\". Use the exact version number, don't include a prefix &#96;v&#96;. See here for an example: https://github.com/obsidianmd/copy-file-link-hotkey/releases",
+            "lineNumber": 33
+          },
+          {
+            "text": "- Upload the files &#96;manifest.json&#96;, &#96;main.js&#96;, &#96;styles.css&#96; as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.",
+            "lineNumber": 34
+          },
+          {
+            "text": "- Publish the release.",
+            "lineNumber": 35
+          },
+          {
+            "lineNumber": 36
+          },
+          {
+            "text": "&gt; You can simplify the version bump process by running &#96;npm version patch&#96;, &#96;npm version minor&#96; or &#96;npm version major&#96; after updating &#96;minAppVersion&#96; manually in &#96;manifest.json&#96;.",
+            "lineNumber": 37
+          },
+          {
+            "text": "&gt; The command will bump version in &#96;manifest.json&#96; and &#96;package.json&#96;, and add the entry for the new version to &#96;versions.json&#96;",
+            "lineNumber": 38
+          },
+          {
+            "lineNumber": 39
+          },
+          {
+            "text": "## Adding your plugin to the community plugin list",
+            "lineNumber": 40
+          },
+          {
+            "lineNumber": 41
+          },
+          {
+            "text": "- Check the [plugin guidelines](https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines).",
+            "lineNumber": 42
+          },
+          {
+            "text": "- Publish an initial version.",
+            "lineNumber": 43
+          },
+          {
+            "text": "- Make sure you have a &#96;README.md&#96; file in the root of your repo.",
+            "lineNumber": 44
+          },
+          {
+            "text": "- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.",
+            "lineNumber": 45
+          },
+          {
+            "lineNumber": 46
+          },
+          {
+            "text": "## How to use",
+            "lineNumber": 47
+          },
+          {
+            "lineNumber": 48
+          },
+          {
+            "text": "- Clone this repo.",
+            "lineNumber": 49
+          },
+          {
+            "text": "- Make sure your NodeJS is at least v16 (&#96;node --version&#96;).",
+            "lineNumber": 50
+          },
+          {
+            "text": "- &#96;npm i&#96; or &#96;yarn&#96; to install dependencies.",
+            "lineNumber": 51
+          },
+          {
+            "text": "- &#96;npm run dev&#96; to start compilation in watch mode.",
+            "lineNumber": 52
+          },
+          {
+            "lineNumber": 53
+          },
+          {
+            "text": "## Manually installing the plugin",
+            "lineNumber": 54
+          },
+          {
+            "lineNumber": 55
+          },
+          {
+            "text": "- Copy over &#96;main.js&#96;, &#96;styles.css&#96;, &#96;manifest.json&#96; to your vault &#96;VaultFolder/.obsidian/plugins/your-plugin-id/&#96;.",
+            "lineNumber": 56
+          },
+          {
+            "lineNumber": 57
+          },
+          {
+            "text": "## Improve code quality with eslint",
+            "lineNumber": 58
+          },
+          {
+            "text": "- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code.",
+            "lineNumber": 59
+          },
+          {
+            "text": "- This project already has eslint preconfigured, you can invoke a check by running&#96;npm run lint&#96;",
+            "lineNumber": 60
+          },
+          {
+            "text": "- Together with a custom eslint [plugin](https://github.com/obsidianmd/eslint-plugin) for Obsidan specific code guidelines.",
+            "lineNumber": 61
+          },
+          {
+            "text": "- A GitHub action is preconfigured to automatically lint every commit on all branches.",
+            "lineNumber": 62
+          }
+        ]
+      },
+      "score": 0.11142086982727051
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./esbuild.config.mjs",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 48,
+            "column": 1
+          }
+        },
+        "contents": "import esbuild from \"esbuild\";\nimport process from \"process\";\nimport { builtinModules } from 'node:module';\n\nconst banner =\n&#96;/*\nTHIS IS A GENERATED/BUNDLED FILE BY ESBUILD\nif you want to view the source, please visit the github repository of this plugin\n*/\n&#96;;\n\nconst prod = (process.argv[2] === \"production\");\n\nconst context = await esbuild.context({\n\tbanner: {\n\t\tjs: banner,\n\t},\n\tentryPoints: [\"src/main.ts\"],\n\tbundle: true,\n\texternal: [\n\t\t\"obsidian\",\n\t\t\"electron\",\n\t\t\"@codemirror/autocomplete\",\n\t\t\"@codemirror/collab\",\n\t\t\"@codemirror/commands\",\n\t\t\"@codemirror/language\",\n\t\t\"@codemirror/lint\",\n\t\t\"@codemirror/search\",\n\t\t\"@codemirror/state\",\n\t\t\"@codemirror/view\",\n\t\t\"@lezer/common\",\n\t\t\"@lezer/highlight\",\n\t\t\"@lezer/lr\",\n\t\t...builtinModules],\n\tformat: \"cjs\",\n\ttarget: \"es2018\",\n\tlogLevel: \"info\",\n\tsourcemap: prod ? false : \"inline\",\n\ttreeShaking: true,\n\toutfile: \"main.js\",\n\tminify: prod,\n});\n\nif (prod) {\n\tawait context.rebuild();\n\tprocess.exit(0);\n} else {\n\tawait context.watch();\n}",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "import esbuild from \"esbuild\";",
+            "lineNumber": 1
+          },
+          {
+            "text": "import process from \"process\";",
+            "lineNumber": 2
+          },
+          {
+            "text": "import { builtinModules } from 'node:module';",
+            "lineNumber": 3
+          },
+          {
+            "lineNumber": 4
+          },
+          {
+            "text": "const banner =",
+            "lineNumber": 5
+          },
+          {
+            "text": "&#96;/*",
+            "lineNumber": 6
+          },
+          {
+            "text": "THIS IS A GENERATED/BUNDLED FILE BY ESBUILD",
+            "lineNumber": 7
+          },
+          {
+            "text": "if you want to view the source, please visit the github repository of this plugin",
+            "lineNumber": 8
+          },
+          {
+            "text": "*/",
+            "lineNumber": 9
+          },
+          {
+            "text": "&#96;;",
+            "lineNumber": 10
+          },
+          {
+            "lineNumber": 11
+          },
+          {
+            "text": "const prod = (process.argv[2] === \"production\");",
+            "lineNumber": 12
+          },
+          {
+            "lineNumber": 13
+          },
+          {
+            "text": "const context = await esbuild.context({",
+            "lineNumber": 14
+          },
+          {
+            "text": "\tbanner: {",
+            "lineNumber": 15
+          },
+          {
+            "text": "\t\tjs: banner,",
+            "lineNumber": 16
+          },
+          {
+            "text": "\t},",
+            "lineNumber": 17
+          },
+          {
+            "text": "\tentryPoints: [\"src/main.ts\"],",
+            "lineNumber": 18
+          },
+          {
+            "text": "\tbundle: true,",
+            "lineNumber": 19
+          },
+          {
+            "text": "\texternal: [",
+            "lineNumber": 20
+          },
+          {
+            "text": "\t\t\"obsidian\",",
+            "lineNumber": 21
+          },
+          {
+            "text": "\t\t\"electron\",",
+            "lineNumber": 22
+          },
+          {
+            "text": "\t\t\"@codemirror/autocomplete\",",
+            "lineNumber": 23
+          },
+          {
+            "text": "\t\t\"@codemirror/collab\",",
+            "lineNumber": 24
+          },
+          {
+            "text": "\t\t\"@codemirror/commands\",",
+            "lineNumber": 25
+          },
+          {
+            "text": "\t\t\"@codemirror/language\",",
+            "lineNumber": 26
+          },
+          {
+            "text": "\t\t\"@codemirror/lint\",",
+            "lineNumber": 27
+          },
+          {
+            "text": "\t\t\"@codemirror/search\",",
+            "lineNumber": 28
+          },
+          {
+            "text": "\t\t\"@codemirror/state\",",
+            "lineNumber": 29
+          },
+          {
+            "text": "\t\t\"@codemirror/view\",",
+            "lineNumber": 30
+          },
+          {
+            "text": "\t\t\"@lezer/common\",",
+            "lineNumber": 31
+          },
+          {
+            "text": "\t\t\"@lezer/highlight\",",
+            "lineNumber": 32
+          },
+          {
+            "text": "\t\t\"@lezer/lr\",",
+            "lineNumber": 33
+          },
+          {
+            "text": "\t\t...builtinModules],",
+            "lineNumber": 34
+          },
+          {
+            "text": "\tformat: \"cjs\",",
+            "lineNumber": 35
+          },
+          {
+            "text": "\ttarget: \"es2018\",",
+            "lineNumber": 36
+          },
+          {
+            "text": "\tlogLevel: \"info\",",
+            "lineNumber": 37
+          },
+          {
+            "text": "\tsourcemap: prod ? false : \"inline\",",
+            "lineNumber": 38
+          },
+          {
+            "text": "\ttreeShaking: true,",
+            "lineNumber": 39
+          },
+          {
+            "text": "\toutfile: \"main.js\",",
+            "lineNumber": 40
+          },
+          {
+            "text": "\tminify: prod,",
+            "lineNumber": 41
+          },
+          {
+            "text": "});",
+            "lineNumber": 42
+          },
+          {
+            "lineNumber": 43
+          },
+          {
+            "text": "if (prod) {",
+            "lineNumber": 44
+          },
+          {
+            "text": "\tawait context.rebuild();",
+            "lineNumber": 45
+          },
+          {
+            "text": "\tprocess.exit(0);",
+            "lineNumber": 46
+          },
+          {
+            "text": "} else {",
+            "lineNumber": 47
+          },
+          {
+            "text": "\tawait context.watch();",
+            "lineNumber": 48
+          },
+          {
+            "text": "}",
+            "lineNumber": 49
+          }
+        ]
+      },
+      "score": 0.10824263095855713
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./AGENTS.md",
+        "range": {
+          "startPosition": {
+            "line": 126
+          },
+          "endPosition": {
+            "line": 172
+          }
+        },
+        "contents": "- Avoid long-running tasks during &#96;onload&#96;; use lazy initialization.\n- Batch disk access and avoid excessive vault scans.\n- Debounce/throttle expensive operations in response to file system events.\n\n## Coding conventions\n\n- TypeScript with &#96;\"strict\": true&#96; preferred.\n- **Keep &#96;main.ts&#96; minimal**: Focus only on plugin lifecycle (onload, onunload, addCommand calls). Delegate all feature logic to separate modules.\n- **Split large files**: If any file exceeds ~200-300 lines, consider breaking it into smaller, focused modules.\n- **Use clear module boundaries**: Each file should have a single, well-defined responsibility.\n- Bundle everything into &#96;main.js&#96; (no unbundled runtime deps).\n- Avoid Node/Electron APIs if you want mobile compatibility; set &#96;isDesktopOnly&#96; accordingly.\n- Prefer &#96;async/await&#96; over promise chains; handle errors gracefully.\n\n## Mobile\n\n- Where feasible, test on iOS and Android.\n- Don't assume desktop-only behavior unless &#96;isDesktopOnly&#96; is &#96;true&#96;.\n- Avoid large in-memory structures; be mindful of memory and storage constraints.\n\n## Agent do/don't\n\n**Do**\n- Add commands with stable IDs (don't rename once released).\n- Provide defaults and validation in settings.\n- Write idempotent code paths so reload/unload doesn't leak listeners or intervals.\n- Use &#96;this.register*&#96; helpers for everything that needs cleanup.\n\n**Don't**\n- Introduce network calls without an obvious user-facing reason and documentation.\n- Ship features that require cloud services without clear disclosure and explicit opt-in.\n- Store or transmit vault contents unless essential and consented.\n\n## Common tasks\n\n### Organize code across multiple files\n\n**main.ts** (minimal, lifecycle only):\n&#96;&#96;&#96;ts\nimport { Plugin } from \"obsidian\";\nimport { MySettings, DEFAULT_SETTINGS } from \"./settings\";\nimport { registerCommands } from \"./commands\";\n\nexport default class MyPlugin extends Plugin {\n  settings: MySettings;",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "- Avoid long-running tasks during &#96;onload&#96;; use lazy initialization.",
+            "lineNumber": 127
+          },
+          {
+            "text": "- Batch disk access and avoid excessive vault scans.",
+            "lineNumber": 128
+          },
+          {
+            "text": "- Debounce/throttle expensive operations in response to file system events.",
+            "lineNumber": 129
+          },
+          {
+            "lineNumber": 130
+          },
+          {
+            "text": "## Coding conventions",
+            "lineNumber": 131
+          },
+          {
+            "lineNumber": 132
+          },
+          {
+            "text": "- TypeScript with &#96;\"strict\": true&#96; preferred.",
+            "lineNumber": 133
+          },
+          {
+            "text": "- **Keep &#96;main.ts&#96; minimal**: Focus only on plugin lifecycle (onload, onunload, addCommand calls). Delegate all feature logic to separate modules.",
+            "lineNumber": 134
+          },
+          {
+            "text": "- **Split large files**: If any file exceeds ~200-300 lines, consider breaking it into smaller, focused modules.",
+            "lineNumber": 135
+          },
+          {
+            "text": "- **Use clear module boundaries**: Each file should have a single, well-defined responsibility.",
+            "lineNumber": 136
+          },
+          {
+            "text": "- Bundle everything into &#96;main.js&#96; (no unbundled runtime deps).",
+            "lineNumber": 137
+          },
+          {
+            "text": "- Avoid Node/Electron APIs if you want mobile compatibility; set &#96;isDesktopOnly&#96; accordingly.",
+            "lineNumber": 138
+          },
+          {
+            "text": "- Prefer &#96;async/await&#96; over promise chains; handle errors gracefully.",
+            "lineNumber": 139
+          },
+          {
+            "lineNumber": 140
+          },
+          {
+            "text": "## Mobile",
+            "lineNumber": 141
+          },
+          {
+            "lineNumber": 142
+          },
+          {
+            "text": "- Where feasible, test on iOS and Android.",
+            "lineNumber": 143
+          },
+          {
+            "text": "- Don't assume desktop-only behavior unless &#96;isDesktopOnly&#96; is &#96;true&#96;.",
+            "lineNumber": 144
+          },
+          {
+            "text": "- Avoid large in-memory structures; be mindful of memory and storage constraints.",
+            "lineNumber": 145
+          },
+          {
+            "lineNumber": 146
+          },
+          {
+            "text": "## Agent do/don't",
+            "lineNumber": 147
+          },
+          {
+            "lineNumber": 148
+          },
+          {
+            "text": "**Do**",
+            "lineNumber": 149
+          },
+          {
+            "text": "- Add commands with stable IDs (don't rename once released).",
+            "lineNumber": 150
+          },
+          {
+            "text": "- Provide defaults and validation in settings.",
+            "lineNumber": 151
+          },
+          {
+            "text": "- Write idempotent code paths so reload/unload doesn't leak listeners or intervals.",
+            "lineNumber": 152
+          },
+          {
+            "text": "- Use &#96;this.register*&#96; helpers for everything that needs cleanup.",
+            "lineNumber": 153
+          },
+          {
+            "lineNumber": 154
+          },
+          {
+            "text": "**Don't**",
+            "lineNumber": 155
+          },
+          {
+            "text": "- Introduce network calls without an obvious user-facing reason and documentation.",
+            "lineNumber": 156
+          },
+          {
+            "text": "- Ship features that require cloud services without clear disclosure and explicit opt-in.",
+            "lineNumber": 157
+          },
+          {
+            "text": "- Store or transmit vault contents unless essential and consented.",
+            "lineNumber": 158
+          },
+          {
+            "lineNumber": 159
+          },
+          {
+            "text": "## Common tasks",
+            "lineNumber": 160
+          },
+          {
+            "lineNumber": 161
+          },
+          {
+            "text": "### Organize code across multiple files",
+            "lineNumber": 162
+          },
+          {
+            "lineNumber": 163
+          },
+          {
+            "text": "**main.ts** (minimal, lifecycle only):",
+            "lineNumber": 164
+          },
+          {
+            "text": "&#96;&#96;&#96;ts",
+            "lineNumber": 165
+          },
+          {
+            "text": "import { Plugin } from \"obsidian\";",
+            "lineNumber": 166
+          },
+          {
+            "text": "import { MySettings, DEFAULT_SETTINGS } from \"./settings\";",
+            "lineNumber": 167
+          },
+          {
+            "text": "import { registerCommands } from \"./commands\";",
+            "lineNumber": 168
+          },
+          {
+            "lineNumber": 169
+          },
+          {
+            "text": "export default class MyPlugin extends Plugin {",
+            "lineNumber": 170
+          },
+          {
+            "text": "  settings: MySettings;",
+            "lineNumber": 171
+          }
+        ]
+      },
+      "score": 0.10037239640951157
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./eslint.config.mts",
+        "range": {
+          "startPosition": {
+            "column": 41
+          },
+          "endPosition": {
+            "line": 33,
+            "column": 2
+          }
+        },
+        "contents": "import obsidianmd from \"eslint-plugin-obsidianmd\";\nimport globals from \"globals\";\nimport { globalIgnores } from \"eslint/config\";\n\nexport default tseslint.config(\n\t{\n\t\tlanguageOptions: {\n\t\t\tglobals: {\n\t\t\t\t...globals.browser,\n\t\t\t},\n\t\t\tparserOptions: {\n\t\t\t\tprojectService: {\n\t\t\t\t\tallowDefaultProject: [\n\t\t\t\t\t\t'eslint.config.js',\n\t\t\t\t\t\t'manifest.json'\n\t\t\t\t\t]\n\t\t\t\t},\n\t\t\t\ttsconfigRootDir: import.meta.dirname,\n\t\t\t\textraFileExtensions: ['.json']\n\t\t\t},\n\t\t},\n\t},\n\t...obsidianmd.configs.recommended,\n\tglobalIgnores([\n\t\t\"node_modules\",\n\t\t\"dist\",\n\t\t\"esbuild.config.mjs\",\n\t\t\"eslint.config.js\",\n\t\t\"version-bump.mjs\",\n\t\t\"versions.json\",\n\t\t\"main.js\",\n\t]),\n);",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "import obsidianmd from \"eslint-plugin-obsidianmd\";",
+            "lineNumber": 2
+          },
+          {
+            "text": "import globals from \"globals\";",
+            "lineNumber": 3
+          },
+          {
+            "text": "import { globalIgnores } from \"eslint/config\";",
+            "lineNumber": 4
+          },
+          {
+            "lineNumber": 5
+          },
+          {
+            "text": "export default tseslint.config(",
+            "lineNumber": 6
+          },
+          {
+            "text": "\t{",
+            "lineNumber": 7
+          },
+          {
+            "text": "\t\tlanguageOptions: {",
+            "lineNumber": 8
+          },
+          {
+            "text": "\t\t\tglobals: {",
+            "lineNumber": 9
+          },
+          {
+            "text": "\t\t\t\t...globals.browser,",
+            "lineNumber": 10
+          },
+          {
+            "text": "\t\t\t},",
+            "lineNumber": 11
+          },
+          {
+            "text": "\t\t\tparserOptions: {",
+            "lineNumber": 12
+          },
+          {
+            "text": "\t\t\t\tprojectService: {",
+            "lineNumber": 13
+          },
+          {
+            "text": "\t\t\t\t\tallowDefaultProject: [",
+            "lineNumber": 14
+          },
+          {
+            "text": "\t\t\t\t\t\t'eslint.config.js',",
+            "lineNumber": 15
+          },
+          {
+            "text": "\t\t\t\t\t\t'manifest.json'",
+            "lineNumber": 16
+          },
+          {
+            "text": "\t\t\t\t\t]",
+            "lineNumber": 17
+          },
+          {
+            "text": "\t\t\t\t},",
+            "lineNumber": 18
+          },
+          {
+            "text": "\t\t\t\ttsconfigRootDir: import.meta.dirname,",
+            "lineNumber": 19
+          },
+          {
+            "text": "\t\t\t\textraFileExtensions: ['.json']",
+            "lineNumber": 20
+          },
+          {
+            "text": "\t\t\t},",
+            "lineNumber": 21
+          },
+          {
+            "text": "\t\t},",
+            "lineNumber": 22
+          },
+          {
+            "text": "\t},",
+            "lineNumber": 23
+          },
+          {
+            "text": "\t...obsidianmd.configs.recommended,",
+            "lineNumber": 24
+          },
+          {
+            "text": "\tglobalIgnores([",
+            "lineNumber": 25
+          },
+          {
+            "text": "\t\t\"node_modules\",",
+            "lineNumber": 26
+          },
+          {
+            "text": "\t\t\"dist\",",
+            "lineNumber": 27
+          },
+          {
+            "text": "\t\t\"esbuild.config.mjs\",",
+            "lineNumber": 28
+          },
+          {
+            "text": "\t\t\"eslint.config.js\",",
+            "lineNumber": 29
+          },
+          {
+            "text": "\t\t\"version-bump.mjs\",",
+            "lineNumber": 30
+          },
+          {
+            "text": "\t\t\"versions.json\",",
+            "lineNumber": 31
+          },
+          {
+            "text": "\t\t\"main.js\",",
+            "lineNumber": 32
+          },
+          {
+            "text": "\t]),",
+            "lineNumber": 33
+          },
+          {
+            "text": ");",
+            "lineNumber": 34
+          }
+        ]
+      },
+      "score": 0.09103570133447647
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./AGENTS.md",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 49,
+            "column": 4
+          }
+        },
+        "contents": "# Obsidian community plugin\n\n## Project overview\n\n- Target: Obsidian Community Plugin (TypeScript → bundled JavaScript).\n- Entry point: &#96;main.ts&#96; compiled to &#96;main.js&#96; and loaded by Obsidian.\n- Required release artifacts: &#96;main.js&#96;, &#96;manifest.json&#96;, and optional &#96;styles.css&#96;.\n\n## Environment &amp; tooling\n\n- Node.js: use current LTS (Node 18+ recommended).\n- **Package manager: npm** (required for this sample - &#96;package.json&#96; defines npm scripts and dependencies).\n- **Bundler: esbuild** (required for this sample - &#96;esbuild.config.mjs&#96; and build scripts depend on it). Alternative bundlers like Rollup or webpack are acceptable for other projects if they bundle all external dependencies into &#96;main.js&#96;.\n- Types: &#96;obsidian&#96; type definitions.\n\n**Note**: This sample project has specific technical dependencies on npm and esbuild. If you're creating a plugin from scratch, you can choose different tools, but you'll need to replace the build configuration accordingly.\n\n### Install\n\n&#96;&#96;&#96;bash\nnpm install\n&#96;&#96;&#96;\n\n### Dev (watch)\n\n&#96;&#96;&#96;bash\nnpm run dev\n&#96;&#96;&#96;\n\n### Production build\n\n&#96;&#96;&#96;bash\nnpm run build\n&#96;&#96;&#96;\n\n## Linting\n\n- To use eslint install eslint from terminal: &#96;npm install -g eslint&#96;\n- To use eslint to analyze this project use this command: &#96;eslint main.ts&#96;\n- eslint will then create a report with suggestions for code improvement by file and line number.\n- If your source code is in a folder, such as &#96;src&#96;, you can use eslint with this command to analyze all files in that folder: &#96;eslint ./src/&#96;\n\n## File &amp; folder conventions\n\n- **Organize code into multiple files**: Split functionality across separate modules rather than putting everything in &#96;main.ts&#96;.\n- Source lives in &#96;src/&#96;. Keep &#96;main.ts&#96; small and focused on plugin lifecycle (loading, unloading, registering commands).\n- **Example file structure**:\n  &#96;&#96;&#96;\n  src/\n    ",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "# Obsidian community plugin",
+            "lineNumber": 1
+          },
+          {
+            "lineNumber": 2
+          },
+          {
+            "text": "## Project overview",
+            "lineNumber": 3
+          },
+          {
+            "lineNumber": 4
+          },
+          {
+            "text": "- Target: Obsidian Community Plugin (TypeScript → bundled JavaScript).",
+            "lineNumber": 5
+          },
+          {
+            "text": "- Entry point: &#96;main.ts&#96; compiled to &#96;main.js&#96; and loaded by Obsidian.",
+            "lineNumber": 6
+          },
+          {
+            "text": "- Required release artifacts: &#96;main.js&#96;, &#96;manifest.json&#96;, and optional &#96;styles.css&#96;.",
+            "lineNumber": 7
+          },
+          {
+            "lineNumber": 8
+          },
+          {
+            "text": "## Environment &amp; tooling",
+            "lineNumber": 9
+          },
+          {
+            "lineNumber": 10
+          },
+          {
+            "text": "- Node.js: use current LTS (Node 18+ recommended).",
+            "lineNumber": 11
+          },
+          {
+            "text": "- **Package manager: npm** (required for this sample - &#96;package.json&#96; defines npm scripts and dependencies).",
+            "lineNumber": 12
+          },
+          {
+            "text": "- **Bundler: esbuild** (required for this sample - &#96;esbuild.config.mjs&#96; and build scripts depend on it). Alternative bundlers like Rollup or webpack are acceptable for other projects if they bundle all external dependencies into &#96;main.js&#96;.",
+            "lineNumber": 13
+          },
+          {
+            "text": "- Types: &#96;obsidian&#96; type definitions.",
+            "lineNumber": 14
+          },
+          {
+            "lineNumber": 15
+          },
+          {
+            "text": "**Note**: This sample project has specific technical dependencies on npm and esbuild. If you're creating a plugin from scratch, you can choose different tools, but you'll need to replace the build configuration accordingly.",
+            "lineNumber": 16
+          },
+          {
+            "lineNumber": 17
+          },
+          {
+            "text": "### Install",
+            "lineNumber": 18
+          },
+          {
+            "lineNumber": 19
+          },
+          {
+            "text": "&#96;&#96;&#96;bash",
+            "lineNumber": 20
+          },
+          {
+            "text": "npm install",
+            "lineNumber": 21
+          },
+          {
+            "text": "&#96;&#96;&#96;",
+            "lineNumber": 22
+          },
+          {
+            "lineNumber": 23
+          },
+          {
+            "text": "### Dev (watch)",
+            "lineNumber": 24
+          },
+          {
+            "lineNumber": 25
+          },
+          {
+            "text": "&#96;&#96;&#96;bash",
+            "lineNumber": 26
+          },
+          {
+            "text": "npm run dev",
+            "lineNumber": 27
+          },
+          {
+            "text": "&#96;&#96;&#96;",
+            "lineNumber": 28
+          },
+          {
+            "lineNumber": 29
+          },
+          {
+            "text": "### Production build",
+            "lineNumber": 30
+          },
+          {
+            "lineNumber": 31
+          },
+          {
+            "text": "&#96;&#96;&#96;bash",
+            "lineNumber": 32
+          },
+          {
+            "text": "npm run build",
+            "lineNumber": 33
+          },
+          {
+            "text": "&#96;&#96;&#96;",
+            "lineNumber": 34
+          },
+          {
+            "lineNumber": 35
+          },
+          {
+            "text": "## Linting",
+            "lineNumber": 36
+          },
+          {
+            "lineNumber": 37
+          },
+          {
+            "text": "- To use eslint install eslint from terminal: &#96;npm install -g eslint&#96;",
+            "lineNumber": 38
+          },
+          {
+            "text": "- To use eslint to analyze this project use this command: &#96;eslint main.ts&#96;",
+            "lineNumber": 39
+          },
+          {
+            "text": "- eslint will then create a report with suggestions for code improvement by file and line number.",
+            "lineNumber": 40
+          },
+          {
+            "text": "- If your source code is in a folder, such as &#96;src&#96;, you can use eslint with this command to analyze all files in that folder: &#96;eslint ./src/&#96;",
+            "lineNumber": 41
+          },
+          {
+            "lineNumber": 42
+          },
+          {
+            "text": "## File &amp; folder conventions",
+            "lineNumber": 43
+          },
+          {
+            "lineNumber": 44
+          },
+          {
+            "text": "- **Organize code into multiple files**: Split functionality across separate modules rather than putting everything in &#96;main.ts&#96;.",
+            "lineNumber": 45
+          },
+          {
+            "text": "- Source lives in &#96;src/&#96;. Keep &#96;main.ts&#96; small and focused on plugin lifecycle (loading, unloading, registering commands).",
+            "lineNumber": 46
+          },
+          {
+            "text": "- **Example file structure**:",
+            "lineNumber": 47
+          },
+          {
+            "text": "  &#96;&#96;&#96;",
+            "lineNumber": 48
+          },
+          {
+            "text": "  src/",
+            "lineNumber": 49
+          },
+          {
+            "text": "    ",
+            "lineNumber": 50
+          }
+        ]
+      },
+      "score": 0.07193464040756226
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./.editorconfig",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 10
+          }
+        },
+        "contents": "# top-most EditorConfig file\nroot = true\n\n[*]\ncharset = utf-8\nend_of_line = lf\ninsert_final_newline = true\nindent_style = tab\nindent_size = 4\ntab_width = 4",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "# top-most EditorConfig file",
+            "lineNumber": 1
+          },
+          {
+            "text": "root = true",
+            "lineNumber": 2
+          },
+          {
+            "lineNumber": 3
+          },
+          {
+            "text": "[*]",
+            "lineNumber": 4
+          },
+          {
+            "text": "charset = utf-8",
+            "lineNumber": 5
+          },
+          {
+            "text": "end_of_line = lf",
+            "lineNumber": 6
+          },
+          {
+            "text": "insert_final_newline = true",
+            "lineNumber": 7
+          },
+          {
+            "text": "indent_style = tab",
+            "lineNumber": 8
+          },
+          {
+            "text": "indent_size = 4",
+            "lineNumber": 9
+          },
+          {
+            "text": "tab_width = 4",
+            "lineNumber": 10
+          }
+        ]
+      },
+      "score": 0.05711229890584946
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./.gitignore",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 22
+          }
+        },
+        "contents": "# vscode\n.vscode \n\n# Intellij\n*.iml\n.idea\n\n# npm\nnode_modules\n\n# Don't include the compiled main.js file in the repo.\n# They should be uploaded to GitHub releases instead.\nmain.js\n\n# Exclude sourcemaps\n*.map\n\n# obsidian\ndata.json\n\n# Exclude macOS Finder (System Explorer) View States\n.DS_Store",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "# vscode",
+            "lineNumber": 1
+          },
+          {
+            "text": ".vscode ",
+            "lineNumber": 2
+          },
+          {
+            "lineNumber": 3
+          },
+          {
+            "text": "# Intellij",
+            "lineNumber": 4
+          },
+          {
+            "text": "*.iml",
+            "lineNumber": 5
+          },
+          {
+            "text": ".idea",
+            "lineNumber": 6
+          },
+          {
+            "lineNumber": 7
+          },
+          {
+            "text": "# npm",
+            "lineNumber": 8
+          },
+          {
+            "text": "node_modules",
+            "lineNumber": 9
+          },
+          {
+            "lineNumber": 10
+          },
+          {
+            "text": "# Don't include the compiled main.js file in the repo.",
+            "lineNumber": 11
+          },
+          {
+            "text": "# They should be uploaded to GitHub releases instead.",
+            "lineNumber": 12
+          },
+          {
+            "text": "main.js",
+            "lineNumber": 13
+          },
+          {
+            "lineNumber": 14
+          },
+          {
+            "text": "# Exclude sourcemaps",
+            "lineNumber": 15
+          },
+          {
+            "text": "*.map",
+            "lineNumber": 16
+          },
+          {
+            "lineNumber": 17
+          },
+          {
+            "text": "# obsidian",
+            "lineNumber": 18
+          },
+          {
+            "text": "data.json",
+            "lineNumber": 19
+          },
+          {
+            "lineNumber": 20
+          },
+          {
+            "text": "# Exclude macOS Finder (System Explorer) View States",
+            "lineNumber": 21
+          },
+          {
+            "text": ".DS_Store",
+            "lineNumber": 22
+          }
+        ]
+      },
+      "score": 0.04040579870343208
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./copy-file-link-hotkey/styles.css",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 8
+          }
+        },
+        "contents": "/*\n\nThis CSS file will be included with your plugin, and\navailable in the app when your plugin is enabled.\n\nIf your plugin does not need CSS, delete this file.\n\n*/",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "/*",
+            "lineNumber": 1
+          },
+          {
+            "lineNumber": 2
+          },
+          {
+            "text": "This CSS file will be included with your plugin, and",
+            "lineNumber": 3
+          },
+          {
+            "text": "available in the app when your plugin is enabled.",
+            "lineNumber": 4
+          },
+          {
+            "lineNumber": 5
+          },
+          {
+            "text": "If your plugin does not need CSS, delete this file.",
+            "lineNumber": 6
+          },
+          {
+            "lineNumber": 7
+          },
+          {
+            "text": "*/",
+            "lineNumber": 8
+          }
+        ]
+      },
+      "score": 0.027925999835133553
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./tsconfig.json",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 30
+          }
+        },
+        "contents": "{\n\t\"compilerOptions\": {\n\t\t\"baseUrl\": \"src\",\n\t\t\"inlineSourceMap\": true,\n\t\t\"inlineSources\": true,\n\t\t\"module\": \"ESNext\",\n\t\t\"target\": \"ES6\",\n\t\t\"allowJs\": true,\n\t\t\"noImplicitAny\": true,\n\t\t\"noImplicitThis\": true,\n\t\t\"noImplicitReturns\": true,\n\t\t\"moduleResolution\": \"node\",\n\t\t\"importHelpers\": true,\n\t\t\"noUncheckedIndexedAccess\": true,\n\t\t\"isolatedModules\": true,\n\t\t\"strictNullChecks\": true,\n\t\t\"strictBindCallApply\": true,\n\t\t\"allowSyntheticDefaultImports\": true,\n\t\t\"useUnknownInCatchVariables\": true,\n\t\t\"lib\": [\n\t\t\t\"DOM\",\n\t\t\t\"ES5\",\n\t\t\t\"ES6\",\n\t\t\t\"ES7\"\n\t\t]\n\t},\n\t\"include\": [\n\t\t\"src/**/*.ts\"\n\t]\n}",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "{",
+            "lineNumber": 1
+          },
+          {
+            "text": "\t\"compilerOptions\": {",
+            "lineNumber": 2
+          },
+          {
+            "text": "\t\t\"baseUrl\": \"src\",",
+            "lineNumber": 3
+          },
+          {
+            "text": "\t\t\"inlineSourceMap\": true,",
+            "lineNumber": 4
+          },
+          {
+            "text": "\t\t\"inlineSources\": true,",
+            "lineNumber": 5
+          },
+          {
+            "text": "\t\t\"module\": \"ESNext\",",
+            "lineNumber": 6
+          },
+          {
+            "text": "\t\t\"target\": \"ES6\",",
+            "lineNumber": 7
+          },
+          {
+            "text": "\t\t\"allowJs\": true,",
+            "lineNumber": 8
+          },
+          {
+            "text": "\t\t\"noImplicitAny\": true,",
+            "lineNumber": 9
+          },
+          {
+            "text": "\t\t\"noImplicitThis\": true,",
+            "lineNumber": 10
+          },
+          {
+            "text": "\t\t\"noImplicitReturns\": true,",
+            "lineNumber": 11
+          },
+          {
+            "text": "\t\t\"moduleResolution\": \"node\",",
+            "lineNumber": 12
+          },
+          {
+            "text": "\t\t\"importHelpers\": true,",
+            "lineNumber": 13
+          },
+          {
+            "text": "\t\t\"noUncheckedIndexedAccess\": true,",
+            "lineNumber": 14
+          },
+          {
+            "text": "\t\t\"isolatedModules\": true,",
+            "lineNumber": 15
+          },
+          {
+            "text": "\t\t\"strictNullChecks\": true,",
+            "lineNumber": 16
+          },
+          {
+            "text": "\t\t\"strictBindCallApply\": true,",
+            "lineNumber": 17
+          },
+          {
+            "text": "\t\t\"allowSyntheticDefaultImports\": true,",
+            "lineNumber": 18
+          },
+          {
+            "text": "\t\t\"useUnknownInCatchVariables\": true,",
+            "lineNumber": 19
+          },
+          {
+            "text": "\t\t\"lib\": [",
+            "lineNumber": 20
+          },
+          {
+            "text": "\t\t\t\"DOM\",",
+            "lineNumber": 21
+          },
+          {
+            "text": "\t\t\t\"ES5\",",
+            "lineNumber": 22
+          },
+          {
+            "text": "\t\t\t\"ES6\",",
+            "lineNumber": 23
+          },
+          {
+            "text": "\t\t\t\"ES7\"",
+            "lineNumber": 24
+          },
+          {
+            "text": "\t\t]",
+            "lineNumber": 25
+          },
+          {
+            "text": "\t},",
+            "lineNumber": 26
+          },
+          {
+            "text": "\t\"include\": [",
+            "lineNumber": 27
+          },
+          {
+            "text": "\t\t\"src/**/*.ts\"",
+            "lineNumber": 28
+          },
+          {
+            "text": "\t]",
+            "lineNumber": 29
+          },
+          {
+            "text": "}",
+            "lineNumber": 30
+          }
+        ]
+      },
+      "score": 0.009982500225305557
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./.npmrc",
+        "range": {
+          "startPosition": {
+            "line": 1,
+            "column": 1
+          },
+          "endPosition": {
+            "line": 1,
+            "column": 22
+          }
+        },
+        "signatures": {}
+      },
+      "score": 0.008805200457572937
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./version-bump.mjs",
+        "range": {
+          "startPosition": {
+            "column": 49
+          },
+          "endPosition": {
+            "line": 10,
+            "column": 80
+          }
+        },
+        "contents": "const targetVersion = process.env.npm_package_version;\n\n// read minAppVersion from manifest.json and bump version to target version\nconst manifest = JSON.parse(readFileSync(\"manifest.json\", \"utf8\"));\nconst { minAppVersion } = manifest;\nmanifest.version = targetVersion;\nwriteFileSync(\"manifest.json\", JSON.stringify(manifest, null, \"\\t\"));\n\n// update versions.json with target version and minAppVersion from manifest.json",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "const targetVersion = process.env.npm_package_version;",
+            "lineNumber": 3
+          },
+          {
+            "lineNumber": 4
+          },
+          {
+            "text": "// read minAppVersion from manifest.json and bump version to target version",
+            "lineNumber": 5
+          },
+          {
+            "text": "const manifest = JSON.parse(readFileSync(\"manifest.json\", \"utf8\"));",
+            "lineNumber": 6
+          },
+          {
+            "text": "const { minAppVersion } = manifest;",
+            "lineNumber": 7
+          },
+          {
+            "text": "manifest.version = targetVersion;",
+            "lineNumber": 8
+          },
+          {
+            "text": "writeFileSync(\"manifest.json\", JSON.stringify(manifest, null, \"\\t\"));",
+            "lineNumber": 9
+          },
+          {
+            "lineNumber": 10
+          },
+          {
+            "text": "// update versions.json with target version and minAppVersion from manifest.json",
+            "lineNumber": 11
+          }
+        ]
+      },
+      "score": -0.005538799799978733
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./version-bump.mjs",
+        "range": {
+          "startPosition": {
+            "line": 8,
+            "column": 69
+          },
+          "endPosition": {
+            "line": 16,
+            "column": 1
+          }
+        },
+        "contents": "// update versions.json with target version and minAppVersion from manifest.json\n// but only if the target version is not already in versions.json\nconst versions = JSON.parse(readFileSync('versions.json', 'utf8'));\nif (!Object.values(versions).includes(minAppVersion)) {\n    versions[targetVersion] = minAppVersion;\n    writeFileSync('versions.json', JSON.stringify(versions, null, '\\t'));\n}",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "// update versions.json with target version and minAppVersion from manifest.json",
+            "lineNumber": 11
+          },
+          {
+            "text": "// but only if the target version is not already in versions.json",
+            "lineNumber": 12
+          },
+          {
+            "text": "const versions = JSON.parse(readFileSync('versions.json', 'utf8'));",
+            "lineNumber": 13
+          },
+          {
+            "text": "if (!Object.values(versions).includes(minAppVersion)) {",
+            "lineNumber": 14
+          },
+          {
+            "text": "    versions[targetVersion] = minAppVersion;",
+            "lineNumber": 15
+          },
+          {
+            "text": "    writeFileSync('versions.json', JSON.stringify(versions, null, '\\t'));",
+            "lineNumber": 16
+          },
+          {
+            "text": "}",
+            "lineNumber": 17
+          }
+        ]
+      },
+      "score": -0.011709700338542461
+    },
+    {
+      "codeBlock": {
+        "relativeWorkspacePath": "./.github/workflows/lint.yml",
+        "range": {
+          "startPosition": {},
+          "endPosition": {
+            "line": 28
+          }
+        },
+        "contents": "name: Node.js build\n\non:\n    push:\n        branches: [\"**\"]\n    pull_request:\n        branches: [\"**\"]\n\njobs:\n    build:\n        runs-on: ubuntu-latest\n\n        strategy:\n            matrix:\n                node-version: [20.x, 22.x]\n                # See supported Node.js release schedule at https://nodejs.org/en/about/releases/\n\n        steps:\n            - uses: actions/checkout@v4\n            - name: Use Node.js ${{ matrix.node-version }}\n              uses: actions/setup-node@v4\n              with:\n                  node-version: ${{ matrix.node-version }}\n                  cache: \"npm\"\n            - run: npm ci\n            - run: npm run build --if-present\n            - run: npm run lint",
+        "signatures": {},
+        "detailedLines": [
+          {
+            "text": "name: Node.js build",
+            "lineNumber": 1
+          },
+          {
+            "lineNumber": 2
+          },
+          {
+            "text": "on:",
+            "lineNumber": 3
+          },
+          {
+            "text": "    push:",
+            "lineNumber": 4
+          },
+          {
+            "text": "        branches: [\"**\"]",
+            "lineNumber": 5
+          },
+          {
+            "text": "    pull_request:",
+            "lineNumber": 6
+          },
+          {
+            "text": "        branches: [\"**\"]",
+            "lineNumber": 7
+          },
+          {
+            "lineNumber": 8
+          },
+          {
+            "text": "jobs:",
+            "lineNumber": 9
+          },
+          {
+            "text": "    build:",
+            "lineNumber": 10
+          },
+          {
+            "text": "        runs-on: ubuntu-latest",
+            "lineNumber": 11
+          },
+          {
+            "lineNumber": 12
+          },
+          {
+            "text": "        strategy:",
+            "lineNumber": 13
+          },
+          {
+            "text": "            matrix:",
+            "lineNumber": 14
+          },
+          {
+            "text": "                node-version: [20.x, 22.x]",
+            "lineNumber": 15
+          },
+          {
+            "text": "                # See supported Node.js release schedule at https://nodejs.org/en/about/releases/",
+            "lineNumber": 16
+          },
+          {
+            "lineNumber": 17
+          },
+          {
+            "text": "        steps:",
+            "lineNumber": 18
+          },
+          {
+            "text": "            - uses: actions/checkout@v4",
+            "lineNumber": 19
+          },
+          {
+            "text": "            - name: Use Node.js ${{ matrix.node-version }}",
+            "lineNumber": 20
+          },
+          {
+            "text": "              uses: actions/setup-node@v4",
+            "lineNumber": 21
+          },
+          {
+            "text": "              with:",
+            "lineNumber": 22
+          },
+          {
+            "text": "                  node-version: ${{ matrix.node-version }}",
+            "lineNumber": 23
+          },
+          {
+            "text": "                  cache: \"npm\"",
+            "lineNumber": 24
+          },
+          {
+            "text": "            - run: npm ci",
+            "lineNumber": 25
+          },
+          {
+            "text": "            - run: npm run build --if-present",
+            "lineNumber": 26
+          },
+          {
+            "text": "            - run: npm run lint",
+            "lineNumber": 27
+          }
+        ]
+      },
+      "score": -0.021683000028133392
+    }
+  ]
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="unknown" data-tool-name="web_search">
+<details>
+<summary>Tool use: **web_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "searchTerm": "Obsidian API metadataCache getLink path shortest path new link format"
+}
+```
+User decision: **accepted**
+
+Status: **loading**
+
+
+</details>
+</tool-use>
+
+---
+

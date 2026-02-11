@@ -9,7 +9,8 @@ export default class CopyFileLinkHotkeyPlugin extends Plugin {
 				const file = this.app.workspace.getActiveFile();
 				if (!file) return false;
 				if (checking) return true;
-				const wikiLink = `[[${file.path}]]`;
+				const linktext = this.app.metadataCache.fileToLinktext(file, file.path, true);
+				const wikiLink = `[[${linktext}]]`;
 				navigator.clipboard.writeText(wikiLink).then(
 					() => new Notice('Copied file link to clipboard'),
 					() => new Notice('Failed to copy to clipboard')
