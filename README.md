@@ -4,8 +4,7 @@ A way to quickly copy the WikiLink of the active file to your clipboard using a 
 
 ## Showcase
 
-
-[![Substack Note Preview](https://github.com/user-attachments/assets/af838b50-2cb3-4d56-ba64-5f7f0afd045e)](https://substack.com/profile/329293831-pamela-wang-phd/note/c-213128963)
+[![Substack Note Preview](https://github.com/user-attachments/assets/8726d9f1-ed00-4569-b200-58b1a7351c78)](https://substack.com/profile/329293831-pamela-wang-phd/note/c-213128963)
 
 ## The Problem
 
