@@ -1,7 +1,7 @@
 {
 	"id": "copy-file-link-hotkey",
 	"name": "Copy File Link Hotkey",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"minAppVersion": "1.7.7",
 	"description": "Copy the link of the current file (in wikilink format) to the clipboard with a hotkey.",
 	"author": "Pamela Wang",
@@ -9,4 +9,3 @@
 	"fundingUrl": "https://ko-fi.com/pamelawang_mwahacookie",
 	"isDesktopOnly": false
 }
-
