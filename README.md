@@ -1,10 +1,10 @@
 # Copy File Link Hotkey
 
-A simple Obsidian plugin to quickly copy the WikiLink of the active file to your clipboard.
+A way to quickly copy the WikiLink of the active file to your clipboard using a hotkey.
 
 ## The Problem
 
-In standard Obsidian, linking to a file usually requires you to navigate to the destination note, remember the filename, return to your original note, and type `[[` to search for it. This breaks flow when you are already looking at the note you want to reference.
+In a standard workflow without this plugin, linking to a file usually requires you to navigate to the destination note, remember the filename, return to your original note, and type `[[` to search for it. This breaks flow when you are already looking at the note you want to reference.
 
 ## The Solution
 
