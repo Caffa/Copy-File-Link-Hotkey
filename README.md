@@ -2,6 +2,10 @@
 
 A way to quickly copy the WikiLink of the active file to your clipboard using a hotkey.
 
+## Showcase
+
+<div class="substack-post-embed"><p lang="en">Showcase of my new plugin - https://github.com/Caffa/Copy-File-Link-Hotkey</p><p> - Pamela Wang, PhD</p><a data-comment-link href="https://substack.com/profile/329293831-pamela-wang-phd/note/c-213128963">Read on Substack</a></div><script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script>
+
 ## The Problem
 
 In a standard workflow without this plugin, linking to a file usually requires you to navigate to the destination note, remember the filename, return to your original note, and type `[[` to search for it. This breaks flow when you are already looking at the note you want to reference.
